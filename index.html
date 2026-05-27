@@ -11,7 +11,7 @@
 body{font-family:'DM Sans',sans-serif;font-weight:300;color:#1a1a1a;background:#f5f3ef}
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.45) saturate(0.75)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(1) saturate(1)}
 .hero-grad{position:absolute;inset:0;background:linear-gradient(170deg,rgba(5,5,12,0.2) 0%,rgba(5,5,12,0.8) 100%)}
 .hero-content{position:relative;z-index:2;padding:0 2rem;max-width:700px}
 .hero-eyebrow{font-size:0.62rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,243,239,0.45);margin-bottom:1.4rem}
@@ -176,7 +176,7 @@ footer{text-align:center;padding:1.5rem;border-top:1px solid #dedad4;font-size:0
 <script>
 // === PHOTO DE FOND ===
 // Remplacez cette URL par votre propre photo ou laissez la photo par défaut
-const HERO_PHOTO = 'https://images.unsplash.com/photo-1545987796-200677ee1011?w=1400&q=80';
+const HERO_PHOTO = './station-planete.png';
 document.getElementById('hero-bg').style.backgroundImage = 'url(' + HERO_PHOTO + ')';
 // Pour utiliser votre propre photo : remplacez l'URL par le chemin local ex: './photo.jpg'
 

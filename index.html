@@ -4,24 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AéroCalme — Sculptures acoustiques suspendues</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;font-weight:300;color:#1a1a1a;background:#f5f3ef}
-/* HERO */
+
+/* ======= HERO ======= */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(1) saturate(1)}
-.hero-grad{position:absolute;inset:0;background:linear-gradient(170deg,rgba(5,5,12,0.2) 0%,rgba(5,5,12,0.8) 100%)}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1545987796-200677ee1011?w=1600&q=85');background-size:cover;background-position:center;filter:brightness(1)}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(170deg,rgba(5,5,12,0.1) 0%,rgba(5,5,12,0.65) 100%)}
 .hero-content{position:relative;z-index:2;padding:0 2rem;max-width:700px}
-.hero-eyebrow{font-size:0.62rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,243,239,0.45);margin-bottom:1.4rem}
+.hero-eyebrow{font-size:0.62rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,243,239,0.5);margin-bottom:1.4rem}
 .hero-logo{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;letter-spacing:0.06em;color:#f5f3ef;line-height:1}
 .hero-logo em{font-style:italic}
-.hero-sub{font-size:0.75rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,243,239,0.38);margin-top:0.8rem}
+.hero-sub{font-size:0.75rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,243,239,0.4);margin-top:0.8rem}
 .hero-desc{max-width:480px;margin:1.5rem auto 0;font-size:0.95rem;color:rgba(245,243,239,0.65);line-height:1.8}
-.hero-cta{display:inline-block;margin-top:2.5rem;padding:12px 32px;border:1px solid rgba(245,243,239,0.3);color:rgba(245,243,239,0.75);font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;transition:all .3s}
-.hero-cta:hover{border-color:rgba(245,243,239,0.8);color:#f5f3ef}
-/* FORM SECTION */
+.hero-cta{display:inline-block;margin-top:2.5rem;padding:12px 32px;border:1px solid rgba(245,243,239,0.35);color:rgba(245,243,239,0.8);font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.hero-cta:hover{border-color:#f5f3ef;color:#f5f3ef}
+.photo-btn{position:absolute;bottom:1.5rem;right:1.5rem;z-index:10;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;padding:7px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;backdrop-filter:blur(4px)}
+#photo-input{display:none}
+
+/* ======= FORM ======= */
 .section{background:#f5f3ef;padding:4rem 2rem;max-width:720px;margin:0 auto}
 .section-tag{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#9a9690;display:block;margin-bottom:1.6rem;padding-bottom:1.2rem;border-bottom:1px solid #dedad4}
 .field{margin-bottom:1.3rem}
@@ -29,44 +32,49 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;color:#1a1a1a;background:#
 .input{width:100%;background:transparent;border:none;border-bottom:1px solid #c8c4be;color:#1a1a1a;padding:0.5rem 0;font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:300;outline:none;-webkit-appearance:none;border-radius:0;transition:border-color .2s}
 .input:focus{border-bottom-color:#1a1a1a}
 .input::placeholder{color:#c0bcb6}
-select.input{cursor:pointer;background-color:transparent}
+select.input{cursor:pointer;background:transparent}
+select.input option{background:#f5f3ef;color:#1a1a1a}
 textarea.input{resize:vertical;line-height:1.7}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-/* CLEF API */
-.api-note{background:#f0eee8;border-left:2px solid #c8c4be;padding:1rem 1.2rem;margin-bottom:1.6rem;font-size:0.78rem;color:#6a6660;line-height:1.6}
-.api-note a{color:#1a1a1a}
-/* BOUTONS */
 .btn-primary{display:block;width:100%;background:#1a1a1a;color:#f5f3ef;border:none;padding:1rem;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:0.8rem;transition:background .2s}
 .btn-primary:hover{background:#333}
-.btn-primary:disabled{background:#888;cursor:not-allowed}
-/* SPINNER */
-.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(245,243,239,0.3);border-top-color:#f5f3ef;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+.btn-primary:disabled{background:#999;cursor:not-allowed}
+.spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(245,243,239,0.3);border-top-color:#f5f3ef;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+.spin-dark{display:inline-block;width:13px;height:13px;border:2px solid rgba(0,0,0,0.15);border-top-color:#1a1a1a;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:7px}
 @keyframes spin{to{transform:rotate(360deg)}}
-/* RÉSULTAT */
+.err{border-left:2px solid #c44;background:#fff8f8;padding:0.8rem 1rem;margin-top:0.8rem;color:#944;font-size:0.82rem;display:none;line-height:1.5}
+
+/* ======= RÉSULTAT ======= */
 .result-box{background:#fff;border:0.5px solid #dedad4;border-radius:4px;padding:2rem;margin-top:1.5rem;display:none}
 .result-tag{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a9690;margin-bottom:1.2rem}
 .result-body{font-size:0.9rem;line-height:1.9;color:#2a2a2a;white-space:pre-wrap}
 .result-body strong{color:#1a1a1a;font-weight:500}
-/* IMAGE GÉNÉRATION */
-.img-section{margin-top:2rem;border-top:1px solid #dedad4;padding-top:1.5rem;display:none}
+.img-section{margin-top:2rem;border-top:1px solid #dedad4;padding-top:1.5rem}
 .img-tag{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a9690;margin-bottom:1rem}
-.img-box{width:100%;aspect-ratio:16/9;background:#f0eee8;border:0.5px solid #dedad4;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#9a9690}
+.img-box{width:100%;aspect-ratio:16/9;background:#f0eee8;border:0.5px solid #dedad4;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#9a9690;text-align:center;padding:1rem}
 .img-box img{width:100%;height:100%;object-fit:cover}
 .btn-secondary{display:block;width:100%;background:transparent;color:#1a1a1a;border:1px solid #1a1a1a;padding:0.9rem;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:1rem;transition:all .2s}
 .btn-secondary:hover{background:#1a1a1a;color:#f5f3ef}
+.btn-secondary:disabled{opacity:0.4;cursor:not-allowed}
 .btn-devis{display:block;width:100%;background:transparent;color:#1a1a1a;border:1px solid #c8c4be;padding:0.9rem;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:0.8rem;transition:all .2s;text-decoration:none;text-align:center}
 .btn-devis:hover{background:#f0eee8}
-/* ERREUR */
-.err{border-left:2px solid #c44;background:#fff8f8;padding:0.8rem 1rem;margin-top:0.8rem;color:#944;font-size:0.82rem;display:none;line-height:1.5}
-/* FOOTER */
 footer{text-align:center;padding:1.5rem;border-top:1px solid #dedad4;font-size:0.58rem;letter-spacing:0.1em;color:#b0aca6;text-transform:uppercase}
-/* SECTION GÉNÉRATION IMAGE NOTE */
-.gen-note{font-size:0.72rem;color:#8a8680;line-height:1.6;margin-top:0.6rem}
 </style>
 </head>
 <body>
 
-<div class="hero">
+<!-- ═══════════════════════════════════════════════
+     CONFIGURATION — À remplir une seule fois
+     ═══════════════════════════════════════════════ -->
+<script>
+const ANTHROPIC_KEY = 'COLLER_CLE_ANTHROPIC_ICI';
+const OPENAI_KEY    = 'COLLER_CLE_OPENAI_ICI';
+// Photo hero : URL externe OU chemin local ex './ma-photo.jpg'
+let HERO_PHOTO = 'https://images.unsplash.com/photo-1545987796-200677ee1011?w=1600&q=85';
+</script>
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="hero" id="hero">
   <div class="hero-bg" id="hero-bg"></div>
   <div class="hero-grad"></div>
   <div class="hero-content">
@@ -76,25 +84,15 @@ footer{text-align:center;padding:1.5rem;border-top:1px solid #dedad4;font-size:0
     <div class="hero-desc">Nous transformons vos grands volumes en espaces de calme — sans compromettre leur présence architecturale.</div>
     <a href="#form" class="hero-cta">↓ Obtenir votre pré-vision gratuite</a>
   </div>
+  <button class="photo-btn" onclick="document.getElementById('photo-input').click()">📷 Changer la photo</button>
+  <input type="file" id="photo-input" accept="image/*" onchange="changerPhoto(event)">
 </div>
 
 <div class="section" id="form">
   <span class="section-tag">Votre pré-vision de projet — non contractuelle</span>
 
-  <div class="api-note">
-    <strong>Clé API Anthropic requise</strong> — utilisée uniquement dans votre navigateur, jamais stockée.<br>
-    Obtenez-la sur <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a>
-  </div>
-
   <div class="field">
-    <label class="label" for="apikey">Clé API Anthropic</label>
-    <input class="input" type="password" id="apikey" placeholder="sk-ant-...">
-  </div>
-
-  <hr style="border:none;border-top:1px solid #dedad4;margin:1.5rem 0">
-
-  <div class="field">
-    <label class="label" for="tl">Type de lieu</label>
+    <label class="label">Type de lieu</label>
     <select class="input" id="tl">
       <option value="">Sélectionner</option>
       <option>Hall d'entreprise / lobby</option>
@@ -155,18 +153,11 @@ footer{text-align:center;padding:1.5rem;border-top:1px solid #dedad4;font-size:0
   <div class="result-box" id="result-box">
     <div class="result-tag">Pré-vision AéroCalme — non contractuelle</div>
     <div class="result-body" id="result-body"></div>
-
-    <div class="img-section" id="img-section">
-      <div class="img-tag">Visualisation architecturale (IA générative)</div>
-      <div class="img-box" id="img-box"><span>Cliquez "Générer la visualisation" pour voir le rendu</span></div>
-      <button class="btn-secondary" onclick="genererImage()">🎨 Générer la visualisation de l'installation</button>
-      <p class="gen-note">La visualisation utilise l'API OpenAI DALL-E 3. Entrez votre clé OpenAI ci-dessous pour l'activer.</p>
-      <div class="field" style="margin-top:0.8rem">
-        <label class="label">Clé API OpenAI (pour la visualisation)</label>
-        <input class="input" type="password" id="oaikey" placeholder="sk-...">
-      </div>
+    <div class="img-section">
+      <div class="img-tag">Visualisation IA de l'installation (DALL-E 3)</div>
+      <div class="img-box" id="img-box">Cliquez le bouton ci-dessous pour générer une visualisation de l'installation dans votre espace</div>
+      <button class="btn-secondary" id="btn-img" onclick="genererImage()">🎨 Générer la visualisation →</button>
     </div>
-
     <a class="btn-devis" id="btn-devis" href="#">Demander une étude ou un devis →</a>
   </div>
 </div>
@@ -174,17 +165,35 @@ footer{text-align:center;padding:1.5rem;border-top:1px solid #dedad4;font-size:0
 <footer>Pré-vision non contractuelle · AéroCalme 2026 · Les performances acoustiques ne peuvent être garanties sans mesure sur site</footer>
 
 <script>
-// === PHOTO DE FOND ===
-// Remplacez cette URL par votre propre photo ou laissez la photo par défaut
-const HERO_PHOTO = './station-planete.png';
+// Init photo
 document.getElementById('hero-bg').style.backgroundImage = 'url(' + HERO_PHOTO + ')';
-// Pour utiliser votre propre photo : remplacez l'URL par le chemin local ex: './photo.jpg'
 
-let previsionText = '';
+// Changer photo en direct
+function changerPhoto(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    document.getElementById('hero-bg').style.backgroundImage = 'url(' + ev.target.result + ')';
+  };
+  reader.readAsDataURL(file);
+}
+
+// Drag & drop photo sur le hero
+document.getElementById('hero').addEventListener('dragover', e => e.preventDefault());
+document.getElementById('hero').addEventListener('drop', e => {
+  e.preventDefault();
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = ev => { document.getElementById('hero-bg').style.backgroundImage = 'url(' + ev.target.result + ')'; };
+    reader.readAsDataURL(file);
+  }
+});
+
 let lieuDescription = '';
 
 async function generer() {
-  const apiKey = document.getElementById('apikey').value.trim();
   const tl = document.getElementById('tl').value;
   const surf = document.getElementById('surf').value;
   const haut = document.getElementById('haut').value;
@@ -192,108 +201,77 @@ async function generer() {
   const sty = document.getElementById('sty').value;
   const bud = document.getElementById('bud').value;
   const mail = document.getElementById('mail').value.trim();
-
   const err = document.getElementById('err');
   const resBox = document.getElementById('result-box');
   err.style.display = 'none';
   resBox.style.display = 'none';
 
-  if (!apiKey) { err.innerHTML = 'Veuillez entrer votre clé API Anthropic.'; err.style.display = 'block'; return; }
-  if (!tl || !prob) { err.innerHTML = 'Veuillez renseigner le type de lieu et le problème acoustique.'; err.style.display = 'block'; return; }
+  if (!tl || !prob) {
+    err.innerHTML = 'Veuillez renseigner le type de lieu et le problème acoustique.';
+    err.style.display = 'block';
+    return;
+  }
 
   const btn = document.getElementById('btn-gen');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>Génération en cours…';
-
-  lieuDescription = `${tl}, ${surf||'?'} m², ${haut||'?'} m de hauteur, style ${sty||'libre'}`;
-
-  const userMsg = `Lieu : ${tl}
-Surface : ${surf || 'non précisé'} m²
-Hauteur sous plafond : ${haut || 'non précisé'} m
-Problème acoustique : ${prob}
-Style souhaité : ${sty || 'non précisé'}
-Budget indicatif : ${bud || 'non défini'}
-Email : ${mail || 'non communiqué'}`;
+  lieuDescription = `${tl}, ${surf||'?'} m² au sol, ${haut||'?'} m de hauteur, style ${sty||'libre'}`;
 
   try {
     const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
+        'x-api-key': ANTHROPIC_KEY,
         'anthropic-version': '2023-06-01',
         'anthropic-dangerous-direct-browser-calls': 'true'
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1400,
-        system: `Tu es l'assistant de pré-création AéroCalme. Mission : transformer les informations fournies par un prospect en pré-vision de projet pour une installation acoustique suspendue monumentale. AéroCalme conçoit des sculptures acoustiques suspendues pour grands volumes : planètes, nuages, halos, vagues, constellations, formes sur mesure. L'objectif est de réduire la réverbération et le brouhaha tout en créant une présence architecturale forte. Règles : ne jamais garantir une baisse de décibels, jamais de performance chiffrée sans mesure, toujours non contractuel, matériaux réels (feutre PET, textile poreux, mousse mélamine, fibre acoustique, câbles inox), pas de concepts fantasy. Répondre en 10 points numérotés.`,
-        messages: [{ role: 'user', content: `Génère une pré-vision complète en 10 points :\n\n${userMsg}` }]
+        system: `Tu es l'assistant de pré-création AéroCalme. Génère une pré-vision de projet pour une installation acoustique suspendue monumentale. Règles : ne jamais garantir une baisse de décibels, jamais de performance chiffrée sans mesure, toujours non contractuel, matériaux réels uniquement (feutre PET, mousse mélamine, câbles inox), pas de concepts fantasy. Répondre en 10 points numérotés : 1.Nom du projet 2.Lecture du lieu 3.Concept proposé 4.Formes recommandées 5.Matériaux probables 6.Logique d'implantation 7.Effet acoustique recherché 8.Complexité 9.Étapes suivantes 10.Disclaimer`,
+        messages: [{ role: 'user', content: `Lieu : ${tl}\nSurface : ${surf||'non précisé'} m²\nHauteur : ${haut||'non précisé'} m\nProblème : ${prob}\nStyle : ${sty||'non précisé'}\nBudget : ${bud||'non défini'}\nEmail : ${mail||'non communiqué'}` }]
       })
     });
-
     const data = await resp.json();
     if (data.error) throw new Error(data.error.message);
-
-    previsionText = data.content[0].text;
-    const formatted = previsionText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    document.getElementById('result-body').innerHTML = formatted;
-
-    // Bouton devis
-    const subject = encodeURIComponent('Demande de devis AéroCalme');
-    const body = encodeURIComponent(`Bonjour,\n\nSuite à ma pré-vision :\n\nLieu : ${tl}\nSurface : ${surf} m² / Hauteur : ${haut} m\nProblème : ${prob}\nBudget : ${bud}\n\nJe souhaite aller plus loin.\n\nCordialement,\n${mail}`);
-    document.getElementById('btn-devis').href = `mailto:contact@aerocalme.fr?subject=${subject}&body=${body}`;
-
-    document.getElementById('img-section').style.display = 'block';
+    document.getElementById('result-body').innerHTML = data.content[0].text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    const s = encodeURIComponent('Demande de devis AéroCalme');
+    const b = encodeURIComponent(`Bonjour,\n\nSuite à ma pré-vision :\nLieu : ${tl} · ${surf} m² · ${haut} m\nProblème : ${prob}\nBudget : ${bud}\n\nJe souhaite aller plus loin.\n\nCordialement,\n${mail}`);
+    document.getElementById('btn-devis').href = `mailto:contact@aerocalme.fr?subject=${s}&body=${b}`;
     resBox.style.display = 'block';
     resBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
   } catch(e) {
     err.innerHTML = '<strong>Erreur :</strong> ' + e.message;
     err.style.display = 'block';
   }
-
   btn.disabled = false;
   btn.innerHTML = 'Générer ma pré-vision →';
 }
 
 async function genererImage() {
-  const oaiKey = document.getElementById('oaikey').value.trim();
-  if (!oaiKey) {
-    alert('Veuillez entrer votre clé API OpenAI pour générer la visualisation.');
-    return;
-  }
-
+  const btn = document.getElementById('btn-img');
   const imgBox = document.getElementById('img-box');
-  imgBox.innerHTML = '<span class="spinner" style="border-color:rgba(0,0,0,0.2);border-top-color:#1a1a1a"></span> Génération en cours…';
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin-dark"></span>Génération DALL-E 3… (~20s)';
+  imgBox.innerHTML = '<span>Génération en cours…</span>';
 
-  const prompt = `Architectural visualization, photoreal, premium. Suspended acoustic sculptures installation inside a ${lieuDescription}. Spherical and elliptical forms in grey and beige acoustic PET felt material, suspended by thin stainless cables from the ceiling. Floating constellation of 8 to 14 acoustic spheres, 2 to 6 meters diameter. Soft natural light from above. Modern, architectural, no toys, no fantasy, no rockets. Style: architectural photography, editorial, luxury commercial.`;
+  const prompt = `Architectural photoreal visualization. Premium suspended acoustic sculptures installation inside a ${lieuDescription}. Large spherical and elliptical forms in matte grey and warm beige acoustic PET felt, suspended by thin stainless steel cables from the ceiling. Floating constellation of 10 to 16 acoustic spheres ranging from 1 to 6 meters diameter. Soft diffused natural zenithal light. No toys, no fantasy, no rockets, no stars. Style: high-end architectural photography, editorial, luxury commercial. Wide angle showing full volume.`;
 
   try {
     const resp = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + oaiKey
-      },
-      body: JSON.stringify({
-        model: 'dall-e-3',
-        prompt: prompt,
-        n: 1,
-        size: '1792x1024',
-        quality: 'standard'
-      })
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + OPENAI_KEY },
+      body: JSON.stringify({ model: 'dall-e-3', prompt, n: 1, size: '1792x1024', quality: 'hd' })
     });
-
     const data = await resp.json();
     if (data.error) throw new Error(data.error.message);
-
-    const imgUrl = data.data[0].url;
-    imgBox.innerHTML = '<img src="' + imgUrl + '" alt="Visualisation AéroCalme">';
-
+    imgBox.innerHTML = '<img src="' + data.data[0].url + '" alt="Visualisation AéroCalme">';
   } catch(e) {
-    imgBox.innerHTML = '<span style="color:#944">Erreur : ' + e.message + '</span>';
+    imgBox.innerHTML = '<span style="color:#944">Erreur DALL-E : ' + e.message + '</span>';
   }
+  btn.disabled = false;
+  btn.innerHTML = '🎨 Regénérer la visualisation →';
 }
 </script>
 </body>

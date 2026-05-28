@@ -1,278 +1,957 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AéroCalme — Sculptures acoustiques suspendues</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;font-weight:300;color:#1a1a1a;background:#f5f3ef}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AéroCalme — Sculptures acoustiques suspendues</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ======= HERO ======= */
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1545987796-200677ee1011?w=1600&q=85');background-size:cover;background-position:center;filter:brightness(0.6)}
-.hero-grad{position:absolute;inset:0;background:linear-gradient(170deg,rgba(5,5,12,0.1) 0%,rgba(5,5,12,0.65) 100%)}
-.hero-content{position:relative;z-index:2;padding:0 2rem;max-width:700px}
-.hero-eyebrow{font-size:0.62rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(245,243,239,0.5);margin-bottom:1.4rem}
-.hero-logo{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;letter-spacing:0.06em;color:#f5f3ef;line-height:1}
-.hero-logo em{font-style:italic}
-.hero-sub{font-size:0.75rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,243,239,0.4);margin-top:0.8rem}
-.hero-desc{max-width:480px;margin:1.5rem auto 0;font-size:0.95rem;color:rgba(245,243,239,0.65);line-height:1.8}
-.hero-cta{display:inline-block;margin-top:2.5rem;padding:12px 32px;border:1px solid rgba(245,243,239,0.35);color:rgba(245,243,239,0.8);font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;transition:all .3s}
-.hero-cta:hover{border-color:#f5f3ef;color:#f5f3ef}
-.photo-btn{position:absolute;bottom:1.5rem;right:1.5rem;z-index:10;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;padding:7px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;backdrop-filter:blur(4px)}
-#photo-input{display:none}
+    :root {
+      --bg-deep:    #0D0D0D;
+      --bg-panel:   #1A1A2E;
+      --bg-card:    #12122A;
+      --gold:       #C8951A;
+      --gold-light: #E0B44A;
+      --gold-dim:   #7A5A10;
+      --text:       #E8E6DF;
+      --text-muted: #8A8880;
+      --border:     #2A2A4A;
+      --font: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    }
 
-/* ======= FORM ======= */
-.section{background:#f5f3ef;padding:4rem 2rem;max-width:720px;margin:0 auto}
-.section-tag{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#9a9690;display:block;margin-bottom:1.6rem;padding-bottom:1.2rem;border-bottom:1px solid #dedad4}
-.field{margin-bottom:1.3rem}
-.label{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:#9a9690;display:block;margin-bottom:0.4rem}
-.input{width:100%;background:transparent;border:none;border-bottom:1px solid #c8c4be;color:#1a1a1a;padding:0.5rem 0;font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:300;outline:none;-webkit-appearance:none;border-radius:0;transition:border-color .2s}
-.input:focus{border-bottom-color:#1a1a1a}
-.input::placeholder{color:#c0bcb6}
-select.input{cursor:pointer;background:transparent}
-select.input option{background:#f5f3ef;color:#1a1a1a}
-textarea.input{resize:vertical;line-height:1.7}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.btn-primary{display:block;width:100%;background:#1a1a1a;color:#f5f3ef;border:none;padding:1rem;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:0.8rem;transition:background .2s}
-.btn-primary:hover{background:#333}
-.btn-primary:disabled{background:#999;cursor:not-allowed}
-.spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(245,243,239,0.3);border-top-color:#f5f3ef;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
-.spin-dark{display:inline-block;width:13px;height:13px;border:2px solid rgba(0,0,0,0.15);border-top-color:#1a1a1a;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:7px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.err{border-left:2px solid #c44;background:#fff8f8;padding:0.8rem 1rem;margin-top:0.8rem;color:#944;font-size:0.82rem;display:none;line-height:1.5}
+    html { scroll-behavior: smooth; }
 
-/* ======= RÉSULTAT ======= */
-.result-box{background:#fff;border:0.5px solid #dedad4;border-radius:4px;padding:2rem;margin-top:1.5rem;display:none}
-.result-tag{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a9690;margin-bottom:1.2rem}
-.result-body{font-size:0.9rem;line-height:1.9;color:#2a2a2a;white-space:pre-wrap}
-.result-body strong{color:#1a1a1a;font-weight:500}
-.img-section{margin-top:2rem;border-top:1px solid #dedad4;padding-top:1.5rem}
-.img-tag{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#9a9690;margin-bottom:1rem}
-.img-box{width:100%;aspect-ratio:16/9;background:#f0eee8;border:0.5px solid #dedad4;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#9a9690;text-align:center;padding:1rem}
-.img-box img{width:100%;height:100%;object-fit:cover}
-.btn-secondary{display:block;width:100%;background:transparent;color:#1a1a1a;border:1px solid #1a1a1a;padding:0.9rem;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:1rem;transition:all .2s}
-.btn-secondary:hover{background:#1a1a1a;color:#f5f3ef}
-.btn-secondary:disabled{opacity:0.4;cursor:not-allowed}
-.btn-devis{display:block;width:100%;background:transparent;color:#1a1a1a;border:1px solid #c8c4be;padding:0.9rem;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:0.8rem;transition:all .2s;text-decoration:none;text-align:center}
-.btn-devis:hover{background:#f0eee8}
-footer{text-align:center;padding:1.5rem;border-top:1px solid #dedad4;font-size:0.58rem;letter-spacing:0.1em;color:#b0aca6;text-transform:uppercase}
-</style>
+    body {
+      background: var(--bg-deep);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 40%, #1A1A3E 0%, #0D0D0D 70%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(200,149,26,.07) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(200,149,26,.05) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    /* Decorative rings */
+    .hero-rings {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-rings span {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(200,149,26,.12);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hero-rings span:nth-child(1) { width: 500px; height: 500px; }
+    .hero-rings span:nth-child(2) { width: 800px; height: 800px; border-color: rgba(200,149,26,.07); }
+    .hero-rings span:nth-child(3) { width: 1100px; height: 1100px; border-color: rgba(200,149,26,.04); }
+
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: .35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 200;
+      letter-spacing: -.02em;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--gold); font-weight: 300; }
+
+    .hero-baseline {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 3.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 3.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .btn-cta:hover { background: var(--gold); color: #000; }
+
+    /* ── SECTION WRAPPER ─────────────────────────────────────────────── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 200;
+      letter-spacing: -.01em;
+      color: #fff;
+      margin-bottom: .8rem;
+    }
+
+    .section-sub {
+      font-size: .95rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    /* ── FORM ────────────────────────────────────────────────────────── */
+    .form-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .field label {
+      display: block;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: .55rem;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: .95rem;
+      font-weight: 300;
+      padding: .8rem 1rem;
+      transition: border-color .2s;
+      outline: none;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { border-color: var(--gold); }
+
+    .field textarea { resize: vertical; min-height: 100px; }
+    .field select option { background: var(--bg-panel); }
+
+    /* File upload */
+    .file-upload-area {
+      border: 1px dashed var(--border);
+      border-radius: 2px;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      position: relative;
+      background: var(--bg-card);
+    }
+    .file-upload-area:hover,
+    .file-upload-area.dragover { border-color: var(--gold); background: rgba(200,149,26,.04); }
+    .file-upload-area input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .upload-icon {
+      font-size: 2rem;
+      margin-bottom: .5rem;
+      color: var(--gold-dim);
+      display: block;
+    }
+    .upload-text { font-size: .85rem; color: var(--text-muted); font-weight: 300; }
+    .upload-text strong { color: var(--gold); font-weight: 500; }
+
+    #preview-img {
+      max-width: 100%;
+      max-height: 180px;
+      border-radius: 2px;
+      margin-top: 1rem;
+      display: none;
+      object-fit: cover;
+    }
+
+    /* API key field */
+    .api-key-section {
+      background: rgba(200,149,26,.05);
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .api-key-section p {
+      font-size: .8rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-top: .5rem;
+      line-height: 1.6;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      border-radius: 2px;
+      font-family: var(--font);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 1.1rem 2rem;
+      cursor: pointer;
+      transition: background .2s, opacity .2s;
+      margin-top: 2rem;
+    }
+    .btn-submit:hover { background: var(--gold-light); }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* ── RESULT ──────────────────────────────────────────────────────── */
+    #result-section { display: none; }
+
+    .result-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .result-header {
+      background: linear-gradient(135deg, var(--bg-card) 0%, #1A1A3E 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .result-header-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .result-header h3 {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: .05em;
+    }
+    .result-header small {
+      display: block;
+      font-size: .7rem;
+      color: var(--gold);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-top: .2rem;
+    }
+
+    .result-body {
+      padding: 2.5rem 3rem;
+    }
+
+    .loading-state {
+      text-align: center;
+      padding: 3rem;
+      display: none;
+    }
+    .loading-state.active { display: block; }
+
+    .spinner {
+      width: 40px; height: 40px;
+      border: 2px solid var(--border);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-state p { color: var(--text-muted); font-size: .9rem; font-weight: 300; }
+
+    #result-content { display: none; }
+    #result-content.active { display: block; }
+
+    /* Markdown-like rendering */
+    .result-text h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin: 2rem 0 .8rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .result-text h2:first-child { margin-top: 0; }
+    .result-text h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      margin: 1.2rem 0 .5rem;
+    }
+    .result-text p {
+      color: var(--text);
+      font-weight: 300;
+      font-size: .95rem;
+      line-height: 1.8;
+      margin-bottom: .8rem;
+    }
+    .result-text ul, .result-text ol {
+      margin: .5rem 0 1rem 1.5rem;
+    }
+    .result-text li {
+      color: var(--text);
+      font-weight: 300;
+      font-size: .95rem;
+      line-height: 1.8;
+      margin-bottom: .25rem;
+    }
+    .result-text strong { color: var(--gold-light); font-weight: 500; }
+    .result-text em { color: var(--text-muted); }
+
+    .disclaimer-box {
+      background: rgba(200,149,26,.06);
+      border-left: 2px solid var(--gold-dim);
+      padding: 1rem 1.5rem;
+      margin-top: 2rem;
+      border-radius: 0 2px 2px 0;
+    }
+    .disclaimer-box p {
+      font-size: .8rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* ── DEVIS ───────────────────────────────────────────────────────── */
+    #devis-section {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+    #devis-section.active { display: block; }
+
+    .devis-inner { max-width: 540px; margin: 0 auto; }
+    .devis-inner h3 {
+      font-size: 1.8rem;
+      font-weight: 200;
+      color: #fff;
+      margin-bottom: .5rem;
+    }
+    .devis-inner p {
+      color: var(--text-muted);
+      font-size: .9rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .btn-devis {
+      display: inline-block;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      border-radius: 2px;
+      font-family: var(--font);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.1rem 3rem;
+      cursor: pointer;
+      transition: background .2s;
+      margin-bottom: 1rem;
+    }
+    .btn-devis:hover { background: var(--gold-light); }
+
+    /* Devis form (alternative) */
+    .devis-form {
+      display: none;
+      text-align: left;
+      margin-top: 2rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+    .devis-form.active { display: block; }
+    .devis-form h4 {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-panel);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 1.1rem;
+      font-weight: 200;
+      letter-spacing: .1em;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+    }
+    .footer-brand span { color: var(--gold); }
+    footer p {
+      font-size: .75rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: .05em;
+    }
+
+    /* ── ERROR ───────────────────────────────────────────────────────── */
+    .error-box {
+      background: rgba(220,50,50,.08);
+      border: 1px solid rgba(220,50,50,.3);
+      border-radius: 2px;
+      padding: 1.2rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .error-box p {
+      color: #E07070;
+      font-size: .875rem;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .form-card { padding: 2rem 1.5rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .result-header { padding: 1.5rem; }
+      .result-body { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     CONFIGURATION — À remplir une seule fois
-     ═══════════════════════════════════════════════ -->
-<script>
-const ANTHROPIC_KEY = 'COLLER_CLE_ANTHROPIC_ICI';
-const OPENAI_KEY    = 'COLLER_CLE_OPENAI_ICI';
-// Photo hero : URL externe OU chemin local ex './ma-photo.jpg'
-let HERO_PHOTO = 'https://images.unsplash.com/photo-1545987796-200677ee1011?w=1600&q=85';
-</script>
-<!-- ═══════════════════════════════════════════════ -->
-
-<div class="hero" id="hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  <div class="hero-grad"></div>
+<!-- ═══════════════════════════ HERO ════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-rings">
+    <span></span><span></span><span></span>
+  </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Acoustique architecturale · Grands volumes</div>
-    <div class="hero-logo">Aéro<em>Calme</em></div>
-    <div class="hero-sub">Sculptures suspendues · Réduction de réverbération</div>
-    <div class="hero-desc">Nous transformons vos grands volumes en espaces de calme — sans compromettre leur présence architecturale.</div>
-    <a href="#form" class="hero-cta">↓ Obtenir votre pré-vision gratuite</a>
+    <div class="hero-eyebrow">Atelier de création acoustique</div>
+    <h1>Aéro<span>Calme</span></h1>
+    <p class="hero-baseline">Sculptures acoustiques suspendues</p>
+    <div class="hero-line"></div>
+    <p class="hero-desc">
+      Nous concevons des installations monumentales suspendues — planètes, nuages, halos, vagues —
+      qui transforment l'acoustique et la perception des grands volumes.
+    </p>
+    <a href="#prevision" class="btn-cta">Obtenir une pré-vision</a>
   </div>
-  <button class="photo-btn" onclick="document.getElementById('photo-input').click()">📷 Changer la photo</button>
-  <input type="file" id="photo-input" accept="image/*" onchange="changerPhoto(event)">
+</section>
+
+<!-- ═══════════════════════════ FORMULAIRE ══════════════════════════════ -->
+<div id="prevision">
+  <div class="section">
+    <div class="section-label">Pré-vision de projet</div>
+    <h2 class="section-title">Décrivez votre espace</h2>
+    <div class="divider"></div>
+    <p class="section-sub">
+      Notre assistant analyse les caractéristiques de votre lieu et génère une pré-vision
+      de concept acoustique sur mesure, non contractuelle.
+    </p>
+
+    <div class="api-key-section">
+      <div class="field">
+        <label>Clé API Anthropic</label>
+        <input type="password" id="api-key" placeholder="sk-ant-…" autocomplete="off" />
+      </div>
+      <p>
+        Votre clé est utilisée uniquement pour cet appel, directement depuis votre navigateur.
+        Elle n'est ni stockée ni transmise à nos serveurs.
+        Obtenez une clé sur <strong style="color:var(--gold-light)">console.anthropic.com</strong>.
+      </p>
+    </div>
+
+    <div class="form-card">
+      <form id="prevision-form">
+        <div class="form-grid">
+
+          <!-- Photo upload -->
+          <div class="field full">
+            <label>Photo du lieu (optionnel)</label>
+            <div class="file-upload-area" id="drop-zone">
+              <input type="file" id="photo-input" accept="image/*" />
+              <span class="upload-icon">◎</span>
+              <div class="upload-text">
+                <strong>Déposez une photo</strong> ou cliquez pour parcourir<br>
+                JPG, PNG, WebP — max 4 Mo
+              </div>
+              <img id="preview-img" alt="Aperçu" />
+            </div>
+          </div>
+
+          <!-- Type de lieu -->
+          <div class="field">
+            <label>Type de lieu</label>
+            <select id="lieu-type">
+              <option value="">— Sélectionnez —</option>
+              <option>Restaurant / Brasserie</option>
+              <option>Hôtel — lobby / hall</option>
+              <option>Bureau — open space</option>
+              <option>Salle de conférence</option>
+              <option>Espace culturel / Musée</option>
+              <option>Commerce / Retail</option>
+              <option>Lieu de culte</option>
+              <option>Salle de sport / Wellness</option>
+              <option>Résidence privée</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <!-- Surface -->
+          <div class="field">
+            <label>Surface au sol (m²)</label>
+            <input type="number" id="surface" placeholder="ex. 350" min="1" />
+          </div>
+
+          <!-- Hauteur -->
+          <div class="field">
+            <label>Hauteur sous plafond (m)</label>
+            <input type="number" id="hauteur" placeholder="ex. 6.5" min="1" step="0.1" />
+          </div>
+
+          <!-- Style -->
+          <div class="field">
+            <label>Style esthétique souhaité</label>
+            <select id="style">
+              <option value="">— Sélectionnez —</option>
+              <option>Minimaliste contemporain</option>
+              <option>Naturel / Organique</option>
+              <option>Industriel / Loft</option>
+              <option>Luxe classique</option>
+              <option>Scandinave</option>
+              <option>Brutaliste / Architectonique</option>
+              <option>Lumineux / Céleste</option>
+              <option>Sur mesure (préciser ci-dessous)</option>
+            </select>
+          </div>
+
+          <!-- Problème acoustique -->
+          <div class="field full">
+            <label>Problème acoustique rencontré</label>
+            <textarea id="probleme" placeholder="Décrivez ce que vous vivez : échos, conversations difficiles, bruit ambiant trop élevé, manque de confort sonore…"></textarea>
+          </div>
+
+          <!-- Budget -->
+          <div class="field">
+            <label>Budget approximatif (€)</label>
+            <select id="budget">
+              <option value="">— Sélectionnez —</option>
+              <option>Moins de 10 000 €</option>
+              <option>10 000 – 25 000 €</option>
+              <option>25 000 – 60 000 €</option>
+              <option>60 000 – 150 000 €</option>
+              <option>Plus de 150 000 €</option>
+              <option>Non défini / À évaluer</option>
+            </select>
+          </div>
+
+          <!-- Email -->
+          <div class="field">
+            <label>Email (pour recevoir la pré-vision)</label>
+            <input type="email" id="email" placeholder="vous@exemple.com" />
+          </div>
+
+        </div>
+
+        <div id="form-error" class="error-box" style="display:none">
+          <p id="form-error-msg"></p>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">
+          Générer ma pré-vision
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 
-<div class="section" id="form">
-  <span class="section-tag">Votre pré-vision de projet — non contractuelle</span>
+<!-- ═══════════════════════════ RÉSULTAT ════════════════════════════════ -->
+<section id="result-section">
+  <div class="section" style="padding-top: 0;">
+    <div class="section-label">Votre pré-vision</div>
+    <h2 class="section-title">Concept proposé</h2>
+    <div class="divider"></div>
 
-  <div class="field">
-    <label class="label">Type de lieu</label>
-    <select class="input" id="tl">
-      <option value="">Sélectionner</option>
-      <option>Hall d'entreprise / lobby</option>
-      <option>Restaurant / brasserie</option>
-      <option>Musée / galerie</option>
-      <option>Hôtel / réception</option>
-      <option>Salle de conférence / amphithéâtre</option>
-      <option>Aéroport / gare</option>
-      <option>Centre commercial</option>
-      <option>Lieu de culte</option>
-      <option>Salle de sport / piscine</option>
-      <option>Autre</option>
-    </select>
-  </div>
-
-  <div class="grid2">
-    <div class="field"><label class="label">Surface au sol (m²)</label><input class="input" type="number" id="surf" placeholder="ex: 400"></div>
-    <div class="field"><label class="label">Hauteur sous plafond (m)</label><input class="input" type="number" id="haut" placeholder="ex: 8"></div>
-  </div>
-
-  <div class="field">
-    <label class="label">Problème acoustique ressenti</label>
-    <textarea class="input" id="prob" rows="3" placeholder="Écho persistant, brouhaha, voix qui portent trop…"></textarea>
-  </div>
-
-  <div class="field">
-    <label class="label">Direction esthétique souhaitée</label>
-    <select class="input" id="sty">
-      <option value="">Sélectionner</option>
-      <option>Minimaliste / épuré</option>
-      <option>Organique / naturel</option>
-      <option>Géométrique / structurel</option>
-      <option>Poétique / nuageux</option>
-      <option>Industriel / brut</option>
-      <option>Prestige / luxe</option>
-      <option>Ouvert à proposition</option>
-    </select>
-  </div>
-
-  <div class="grid2">
-    <div class="field">
-      <label class="label">Enveloppe indicative</label>
-      <select class="input" id="bud">
-        <option value="">Non défini</option>
-        <option>Moins de 10 000 €</option>
-        <option>10 000 – 30 000 €</option>
-        <option>30 000 – 80 000 €</option>
-        <option>80 000 – 200 000 €</option>
-        <option>Plus de 200 000 €</option>
-      </select>
+    <div class="result-card">
+      <div class="result-header">
+        <div class="result-header-icon">◈</div>
+        <div>
+          <h3>Pré-vision AéroCalme</h3>
+          <small>Générée par l'assistant de pré-création</small>
+        </div>
+      </div>
+      <div class="result-body">
+        <div class="loading-state" id="loading">
+          <div class="spinner"></div>
+          <p>Analyse du lieu en cours…</p>
+        </div>
+        <div id="result-content">
+          <div class="result-text" id="result-text"></div>
+        </div>
+      </div>
     </div>
-    <div class="field"><label class="label">Email de contact</label><input class="input" type="email" id="mail" placeholder="vous@domaine.com"></div>
+
   </div>
 
-  <button class="btn-primary" id="btn-gen" onclick="generer()">Générer ma pré-vision →</button>
-  <div class="err" id="err"></div>
+  <!-- DEVIS -->
+  <div id="devis-section">
+    <div class="devis-inner">
+      <h3>Concrétisons votre projet</h3>
+      <p>
+        Cette pré-vision vous intéresse ? Contactez-nous pour une consultation approfondie,
+        une visite du site et un devis détaillé.
+      </p>
+      <button class="btn-devis" id="devis-toggle-btn">Demander un devis</button>
 
-  <div class="result-box" id="result-box">
-    <div class="result-tag">Pré-vision AéroCalme — non contractuelle</div>
-    <div class="result-body" id="result-body"></div>
-    <div class="img-section">
-      <div class="img-tag">Visualisation IA de l'installation (DALL-E 3)</div>
-      <div class="img-box" id="img-box">Cliquez le bouton ci-dessous pour générer une visualisation de l'installation dans votre espace</div>
-      <button class="btn-secondary" id="btn-img" onclick="genererImage()">🎨 Générer la visualisation →</button>
+      <div class="devis-form" id="devis-form">
+        <h4>Prise de contact</h4>
+        <div class="form-grid" style="gap:1rem">
+          <div class="field">
+            <label>Nom / Société</label>
+            <input type="text" id="devis-nom" placeholder="Votre nom ou entreprise" />
+          </div>
+          <div class="field">
+            <label>Téléphone</label>
+            <input type="tel" id="devis-tel" placeholder="+33 6 …" />
+          </div>
+          <div class="field full">
+            <label>Message complémentaire</label>
+            <textarea id="devis-msg" placeholder="Délai souhaité, contraintes particulières…" style="min-height:80px"></textarea>
+          </div>
+        </div>
+        <button class="btn-submit" id="devis-submit-btn" style="margin-top:1.5rem">
+          Envoyer la demande
+        </button>
+        <div id="devis-confirm" style="display:none; margin-top:1rem; text-align:center; color:var(--gold); font-size:.9rem; font-weight:300;">
+          Votre demande a été envoyée. Nous vous recontacterons sous 48 h.
+        </div>
+      </div>
     </div>
-    <a class="btn-devis" id="btn-devis" href="#">Demander une étude ou un devis →</a>
   </div>
-</div>
+</section>
 
-<footer>Pré-vision non contractuelle · AéroCalme 2026 · Les performances acoustiques ne peuvent être garanties sans mesure sur site</footer>
+<!-- ═══════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer>
+  <p class="footer-brand">Aéro<span>Calme</span></p>
+  <p>Pré-vision non contractuelle — AéroCalme 2026</p>
+</footer>
 
+<!-- ═══════════════════════════ SCRIPTS ═════════════════════════════════ -->
 <script>
-// Init photo
-document.getElementById('hero-bg').style.backgroundImage = 'url(' + HERO_PHOTO + ')';
+(function () {
 
-// Changer photo en direct
-function changerPhoto(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    document.getElementById('hero-bg').style.backgroundImage = 'url(' + ev.target.result + ')';
-  };
-  reader.readAsDataURL(file);
-}
+  /* ── File upload / drag-drop ───────────────────────────────────────── */
+  const dropZone   = document.getElementById('drop-zone');
+  const photoInput = document.getElementById('photo-input');
+  const previewImg = document.getElementById('preview-img');
 
-// Drag & drop photo sur le hero
-document.getElementById('hero').addEventListener('dragover', e => e.preventDefault());
-document.getElementById('hero').addEventListener('drop', e => {
-  e.preventDefault();
-  const file = e.dataTransfer.files[0];
-  if (file && file.type.startsWith('image/')) {
+  photoInput.addEventListener('change', () => {
+    if (photoInput.files[0]) showPreview(photoInput.files[0]);
+  });
+
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    if (e.dataTransfer.files[0]) {
+      photoInput.files = e.dataTransfer.files;
+      showPreview(e.dataTransfer.files[0]);
+    }
+  });
+
+  function showPreview(file) {
     const reader = new FileReader();
-    reader.onload = ev => { document.getElementById('hero-bg').style.backgroundImage = 'url(' + ev.target.result + ')'; };
+    reader.onload = ev => {
+      previewImg.src = ev.target.result;
+      previewImg.style.display = 'block';
+    };
     reader.readAsDataURL(file);
   }
-});
 
-let lieuDescription = '';
-
-async function generer() {
-  const tl = document.getElementById('tl').value;
-  const surf = document.getElementById('surf').value;
-  const haut = document.getElementById('haut').value;
-  const prob = document.getElementById('prob').value.trim();
-  const sty = document.getElementById('sty').value;
-  const bud = document.getElementById('bud').value;
-  const mail = document.getElementById('mail').value.trim();
-  const err = document.getElementById('err');
-  const resBox = document.getElementById('result-box');
-  err.style.display = 'none';
-  resBox.style.display = 'none';
-
-  if (!tl || !prob) {
-    err.innerHTML = 'Veuillez renseigner le type de lieu et le problème acoustique.';
-    err.style.display = 'block';
-    return;
-  }
-
-  const btn = document.getElementById('btn-gen');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>Génération en cours…';
-  lieuDescription = `${tl}, ${surf||'?'} m² au sol, ${haut||'?'} m de hauteur, style ${sty||'libre'}`;
-
-  try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-calls': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1400,
-        system: `Tu es l'assistant de pré-création AéroCalme. Génère une pré-vision de projet pour une installation acoustique suspendue monumentale. Règles : ne jamais garantir une baisse de décibels, jamais de performance chiffrée sans mesure, toujours non contractuel, matériaux réels uniquement (feutre PET, mousse mélamine, câbles inox), pas de concepts fantasy. Répondre en 10 points numérotés : 1.Nom du projet 2.Lecture du lieu 3.Concept proposé 4.Formes recommandées 5.Matériaux probables 6.Logique d'implantation 7.Effet acoustique recherché 8.Complexité 9.Étapes suivantes 10.Disclaimer`,
-        messages: [{ role: 'user', content: `Lieu : ${tl}\nSurface : ${surf||'non précisé'} m²\nHauteur : ${haut||'non précisé'} m\nProblème : ${prob}\nStyle : ${sty||'non précisé'}\nBudget : ${bud||'non défini'}\nEmail : ${mail||'non communiqué'}` }]
-      })
+  /* ── Convert image file to base64 string ──────────────────────────── */
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
     });
-    const data = await resp.json();
-    if (data.error) throw new Error(data.error.message);
-    document.getElementById('result-body').innerHTML = data.content[0].text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    const s = encodeURIComponent('Demande de devis AéroCalme');
-    const b = encodeURIComponent(`Bonjour,\n\nSuite à ma pré-vision :\nLieu : ${tl} · ${surf} m² · ${haut} m\nProblème : ${prob}\nBudget : ${bud}\n\nJe souhaite aller plus loin.\n\nCordialement,\n${mail}`);
-    document.getElementById('btn-devis').href = `mailto:contact@aerocalme.fr?subject=${s}&body=${b}`;
-    resBox.style.display = 'block';
-    resBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } catch(e) {
-    err.innerHTML = '<strong>Erreur :</strong> ' + e.message;
-    err.style.display = 'block';
   }
-  btn.disabled = false;
-  btn.innerHTML = 'Générer ma pré-vision →';
-}
 
-async function genererImage() {
-  const btn = document.getElementById('btn-img');
-  const imgBox = document.getElementById('img-box');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spin-dark"></span>Génération DALL-E 3… (~20s)';
-  imgBox.innerHTML = '<span>Génération en cours…</span>';
+  /* ── Simple markdown → HTML (headings, bold, lists) ──────────────── */
+  function renderMarkdown(text) {
+    let html = text
+      .replace(/^#{1,2}\s+(.+)$/gm, '<h2>$1</h2>')
+      .replace(/^###\s+(.+)$/gm, '<h3>$1</h3>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/^[-*]\s+(.+)$/gm, '<li>$1</li>');
 
-  const prompt = `Architectural photoreal visualization. Premium suspended acoustic sculptures installation inside a ${lieuDescription}. Large spherical and elliptical forms in matte grey and warm beige acoustic PET felt, suspended by thin stainless steel cables from the ceiling. Floating constellation of 10 to 16 acoustic spheres ranging from 1 to 6 meters diameter. Soft diffused natural zenithal light. No toys, no fantasy, no rockets, no stars. Style: high-end architectural photography, editorial, luxury commercial. Wide angle showing full volume.`;
+    // wrap consecutive <li> in <ul>
+    html = html.replace(/(<li>.*<\/li>\n?)+/gs, match => `<ul>${match}</ul>`);
 
-  try {
-    const resp = await fetch('https://api.openai.com/v1/images/generations', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + OPENAI_KEY },
-      body: JSON.stringify({ model: 'dall-e-3', prompt, n: 1, size: '1792x1024', quality: 'hd' })
-    });
-    const data = await resp.json();
-    if (data.error) throw new Error(data.error.message);
-    imgBox.innerHTML = '<img src="' + data.data[0].url + '" alt="Visualisation AéroCalme">';
-  } catch(e) {
-    imgBox.innerHTML = '<span style="color:#944">Erreur DALL-E : ' + e.message + '</span>';
+    // wrap bare text lines in <p>
+    html = html.replace(/^(?!<[hul]|<li)(.+)$/gm, '<p>$1</p>');
+
+    return html;
   }
-  btn.disabled = false;
-  btn.innerHTML = '🎨 Regénérer la visualisation →';
-}
+
+  /* ── Form submission ───────────────────────────────────────────────── */
+  const form       = document.getElementById('prevision-form');
+  const submitBtn  = document.getElementById('submit-btn');
+  const formError  = document.getElementById('form-error');
+  const formErrMsg = document.getElementById('form-error-msg');
+
+  function showError(msg) {
+    formErrMsg.textContent = msg;
+    formError.style.display = 'block';
+    formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function hideError() { formError.style.display = 'none'; }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+
+    const apiKey  = document.getElementById('api-key').value.trim();
+    const lieuType = document.getElementById('lieu-type').value;
+    const surface  = document.getElementById('surface').value;
+    const hauteur  = document.getElementById('hauteur').value;
+    const probleme = document.getElementById('probleme').value.trim();
+    const style    = document.getElementById('style').value;
+    const budget   = document.getElementById('budget').value;
+    const email    = document.getElementById('email').value.trim();
+    const photoFile = photoInput.files[0];
+
+    if (!apiKey) { showError('Veuillez saisir votre clé API Anthropic.'); return; }
+    if (!lieuType) { showError('Veuillez sélectionner le type de lieu.'); return; }
+    if (!surface || !hauteur) { showError('Veuillez renseigner la surface et la hauteur du lieu.'); return; }
+    if (!probleme) { showError('Veuillez décrire le problème acoustique rencontré.'); return; }
+
+    // Build user prompt text
+    const userPromptText = [
+      `Type de lieu : ${lieuType}`,
+      `Surface au sol : ${surface} m²`,
+      `Hauteur sous plafond : ${hauteur} m`,
+      `Problème acoustique : ${probleme}`,
+      style   ? `Style esthétique souhaité : ${style}` : null,
+      budget  ? `Budget approximatif : ${budget}` : null,
+      email   ? `Email du prospect : ${email}` : null,
+    ].filter(Boolean).join('\n');
+
+    // Build message content
+    const userContent = [];
+
+    if (photoFile) {
+      try {
+        const b64 = await fileToBase64(photoFile);
+        const mediaType = photoFile.type || 'image/jpeg';
+        userContent.push({
+          type: 'image',
+          source: { type: 'base64', media_type: mediaType, data: b64 }
+        });
+      } catch (_) { /* skip image if conversion fails */ }
+    }
+
+    userContent.push({ type: 'text', text: userPromptText });
+
+    // Show result section / loading
+    const resultSection = document.getElementById('result-section');
+    const loadingEl     = document.getElementById('loading');
+    const resultContent = document.getElementById('result-content');
+    const resultText    = document.getElementById('result-text');
+    const devisSection  = document.getElementById('devis-section');
+
+    resultSection.style.display = 'block';
+    loadingEl.classList.add('active');
+    resultContent.classList.remove('active');
+    devisSection.classList.remove('active');
+    resultText.innerHTML = '';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Génération en cours…';
+
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const SYSTEM_PROMPT = `Tu es l'assistant de pré-création AéroCalme. Mission : Transformer les informations fournies par un prospect en pré-vision de projet pour une installation acoustique suspendue monumentale. AéroCalme conçoit des sculptures acoustiques suspendues pour grands volumes : planètes, nuages, halos, vagues, constellations, formes sur mesure. Règles : ne jamais garantir une baisse de décibels, ne jamais promettre une performance chiffrée sans mesure, toujours préciser que la pré-vision est non contractuelle, parler de réduction de réverbération et confort sonore. Sortie : 1.Nom du projet 2.Lecture du lieu 3.Concept proposé 4.Formes recommandées 5.Matériaux probables 6.Logique d'implantation 7.Effet acoustique recherché 8.Complexité : simple/intermédiaire/monumental 9.Étapes suivantes 10.Disclaimer`;
+
+    try {
+      const resp = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-calls': 'true',
+        },
+        body: JSON.stringify({
+          model: 'claude-opus-4-7',
+          max_tokens: 2048,
+          system: SYSTEM_PROMPT,
+          messages: [{ role: 'user', content: userContent }],
+        }),
+      });
+
+      if (!resp.ok) {
+        const errData = await resp.json().catch(() => ({}));
+        const errMsg  = errData?.error?.message || `Erreur HTTP ${resp.status}`;
+        throw new Error(errMsg);
+      }
+
+      const data    = await resp.json();
+      const rawText = data?.content?.[0]?.text || '';
+
+      loadingEl.classList.remove('active');
+      resultContent.classList.add('active');
+      resultText.innerHTML = renderMarkdown(rawText);
+      devisSection.classList.add('active');
+
+    } catch (err) {
+      loadingEl.classList.remove('active');
+      showError(`Erreur lors de la génération : ${err.message}`);
+      resultSection.style.display = 'none';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Générer ma pré-vision';
+    }
+  });
+
+  /* ── Devis toggle ─────────────────────────────────────────────────── */
+  const devisToggleBtn = document.getElementById('devis-toggle-btn');
+  const devisForm      = document.getElementById('devis-form');
+  const devisSubmitBtn = document.getElementById('devis-submit-btn');
+  const devisConfirm   = document.getElementById('devis-confirm');
+
+  let devisOpen = false;
+  devisToggleBtn.addEventListener('click', () => {
+    devisOpen = !devisOpen;
+    devisForm.classList.toggle('active', devisOpen);
+    devisToggleBtn.textContent = devisOpen ? 'Fermer le formulaire' : 'Demander un devis';
+    if (devisOpen) devisForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  devisSubmitBtn.addEventListener('click', () => {
+    const nom   = document.getElementById('devis-nom').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const tel   = document.getElementById('devis-tel').value.trim();
+    const msg   = document.getElementById('devis-msg').value.trim();
+
+    const subject = encodeURIComponent('Demande de devis AéroCalme');
+    const body = encodeURIComponent(
+      `Nom / Société : ${nom}\nEmail : ${email}\nTéléphone : ${tel}\n\n${msg}`
+    );
+    window.location.href = `mailto:contact@aerocalme.fr?subject=${subject}&body=${body}`;
+    devisConfirm.style.display = 'block';
+    devisSubmitBtn.disabled = true;
+  });
+
+})();
 </script>
 </body>
 </html>

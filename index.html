@@ -535,10 +535,9 @@
     }
 
     .carousel-slide {
-      flex: 0 0 100%;
-      width: 100%;
-      height: 70vh;
-      min-height: 380px;
+      flex: 0 0 calc(100% / 3);
+      width: calc(100% / 3);
+      height: 280px;
       cursor: zoom-in;
       overflow: hidden;
     }
@@ -660,7 +659,7 @@
       .form-grid { grid-template-columns: 1fr; }
       .result-header { padding: 1.5rem; }
       .result-body { padding: 1.5rem; }
-      .carousel-slide { height: 50vw; min-height: 220px; }
+      .carousel-slide { flex: 0 0 100%; width: 100%; height: 56vw; min-height: 200px; }
       .carousel-arrow, .lightbox-arrow { width: 38px; height: 38px; font-size: 1.4rem; }
     }
   </style>
@@ -1143,12 +1142,26 @@
   let current = 0;
   let timer;
 
-  function goTo(idx) {
-    dots[current].classList.remove('active');
-    current = (idx + TOTAL) % TOTAL;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dots[current].classList.add('active');
+  function visibleCount() {
+    return Math.max(1, Math.round(carousel.offsetWidth / slides[0].offsetWidth));
   }
+  function pageCount() { return Math.max(1, TOTAL - visibleCount() + 1); }
+
+  function goTo(idx) {
+    const pages = pageCount();
+    if (dots[current]) dots[current].classList.remove('active');
+    current = (idx + pages) % pages;
+    track.style.transform = `translateX(-${current * slides[0].offsetWidth}px)`;
+    if (dots[current]) dots[current].classList.add('active');
+  }
+
+  window.addEventListener('resize', () => {
+    const p = pageCount();
+    if (current >= p) current = p - 1;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${current * slides[0].offsetWidth}px)`;
+    requestAnimationFrame(() => { track.style.transition = ''; });
+  });
 
   function startTimer() { timer = setInterval(() => goTo(current + 1), INTERVAL); }
   function resetTimer()  { clearInterval(timer); startTimer(); }

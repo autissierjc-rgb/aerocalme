@@ -515,12 +515,153 @@
       margin: 0;
     }
 
+    /* ── CAROUSEL ────────────────────────────────────────────────────────── */
+    .carousel-section {
+      background: #06060f;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .6s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 70vh;
+      min-height: 380px;
+      cursor: zoom-in;
+      overflow: hidden;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .carousel-slide:hover img { transform: scale(1.03); }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(6,6,15,.6);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.8rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background .2s, color .2s;
+      padding: 0;
+      line-height: 1;
+    }
+    .carousel-arrow:hover { background: var(--gold); color: #000; }
+    .carousel-prev { left: 1.5rem; }
+    .carousel-next { right: 1.5rem; }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .65rem;
+      z-index: 10;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .carousel-dot.active { background: var(--gold); }
+
+    /* ── LIGHTBOX ─────────────────────────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.93);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      box-shadow: 0 0 80px rgba(200,149,26,.12);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 2.5rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color .2s;
+    }
+    .lightbox-close:hover { color: #fff; }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,.5);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.8rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      padding: 0;
+    }
+    .lightbox-arrow:hover { background: var(--gold); color: #000; }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
     /* ── RESPONSIVE ──────────────────────────────────────────────────── */
     @media (max-width: 640px) {
       .form-card { padding: 2rem 1.5rem; }
       .form-grid { grid-template-columns: 1fr; }
       .result-header { padding: 1.5rem; }
       .result-body { padding: 1.5rem; }
+      .carousel-slide { height: 50vw; min-height: 220px; }
+      .carousel-arrow, .lightbox-arrow { width: 38px; height: 38px; font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -543,6 +684,36 @@
     <a href="#prevision" class="btn-cta">Obtenir une pré-vision</a>
   </div>
 </section>
+
+<!-- ═══════════════════════════ CARROUSEL ═══════════════════════════════ -->
+<section class="carousel-section">
+  <div class="carousel" id="carousel">
+    <div class="carousel-track" id="carousel-track">
+      <div class="carousel-slide"><img src="./original_station_f.jpg"             alt="Station acoustique" /></div>
+      <div class="carousel-slide"><img src="./licorne_suspendue_v1.png"           alt="Licorne suspendue" /></div>
+      <div class="carousel-slide"><img src="./licorne_grande_corne_couleur_v1.png" alt="Grande corne v1" /></div>
+      <div class="carousel-slide"><img src="./licorne_grande_corne_couleur_v3.png" alt="Grande corne v3" /></div>
+      <div class="carousel-slide"><img src="./station-planete.png"                alt="Station planète" /></div>
+    </div>
+    <button class="carousel-arrow carousel-prev" aria-label="Précédent">&#8249;</button>
+    <button class="carousel-arrow carousel-next" aria-label="Suivant">&#8250;</button>
+    <div class="carousel-dots">
+      <span class="carousel-dot active"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ LIGHTBOX ════════════════════════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">&times;</button>
+  <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Précédent">&#8249;</button>
+  <img class="lightbox-img" id="lightbox-img" alt="" />
+  <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Suivant">&#8250;</button>
+</div>
 
 <!-- ═══════════════════════════ FORMULAIRE ══════════════════════════════ -->
 <div id="prevision">
@@ -951,6 +1122,77 @@
     devisSubmitBtn.disabled = true;
   });
 
+})();
+
+/* ── Carousel + Lightbox ───────────────────────────────────────────── */
+(function () {
+  const track     = document.getElementById('carousel-track');
+  const slides    = Array.from(document.querySelectorAll('.carousel-slide'));
+  const dots      = Array.from(document.querySelectorAll('.carousel-dot'));
+  const prevBtn   = document.querySelector('.carousel-prev');
+  const nextBtn   = document.querySelector('.carousel-next');
+  const carousel  = document.getElementById('carousel');
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lightbox-img');
+  const lbClose   = document.getElementById('lightbox-close');
+  const lbPrev    = document.getElementById('lightbox-prev');
+  const lbNext    = document.getElementById('lightbox-next');
+
+  const TOTAL    = slides.length;
+  const INTERVAL = 4500;
+  let current = 0;
+  let timer;
+
+  function goTo(idx) {
+    dots[current].classList.remove('active');
+    current = (idx + TOTAL) % TOTAL;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() { timer = setInterval(() => goTo(current + 1), INTERVAL); }
+  function resetTimer()  { clearInterval(timer); startTimer(); }
+
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
+
+  carousel.addEventListener('mouseenter', () => clearInterval(timer));
+  carousel.addEventListener('mouseleave', startTimer);
+
+  /* Lightbox */
+  function openLightbox(idx) {
+    lbImg.src = slides[idx].querySelector('img').src;
+    lbImg.alt = slides[idx].querySelector('img').alt;
+    lightbox.classList.add('active');
+    lightbox._idx = idx;
+  }
+
+  slides.forEach((slide, i) => slide.addEventListener('click', () => openLightbox(i)));
+
+  function closeLightbox() { lightbox.classList.remove('active'); lbImg.src = ''; }
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  lbPrev.addEventListener('click', e => {
+    e.stopPropagation();
+    lightbox._idx = (lightbox._idx - 1 + TOTAL) % TOTAL;
+    openLightbox(lightbox._idx);
+  });
+  lbNext.addEventListener('click', e => {
+    e.stopPropagation();
+    lightbox._idx = (lightbox._idx + 1) % TOTAL;
+    openLightbox(lightbox._idx);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape')       { closeLightbox(); return; }
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft')  lbPrev.click();
+    if (e.key === 'ArrowRight') lbNext.click();
+  });
+
+  startTimer();
 })();
 </script>
 </body>

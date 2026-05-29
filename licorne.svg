@@ -4,8 +4,9 @@
 text { font-family: Arial, sans-serif; letter-spacing: 0; }
 </style>
 <!-- Titre -->
-<text x="500" y="28" text-anchor="middle" font-size="14" fill="#C8951A" letter-spacing="1" style="font-family:Georgia,serif;letter-spacing:1px">COUPE ANATOMIQUE — LICORNE ACOUSTIQUE AEROCALME — GRANDS VOLUMES</text>
-<text x="500" y="44" text-anchor="middle" font-size="8.5" fill="#3a3428" style="letter-spacing:1px">Hall 1750 m3 — Corne borosilicate — Jambes bambou — Cavite PE rotomoulee</text>
+<text x="500" y="26" text-anchor="middle" font-size="13" fill="#C8951A" style="font-family:Georgia,serif">COUPE ANATOMIQUE LICORNE ACOUSTIQUE AEROCALME</text>
+<text x="500" y="40" text-anchor="middle" font-size="9" fill="#C8951A" style="font-family:Georgia,serif">GRANDS VOLUMES</text>
+<text x="500" y="54" text-anchor="middle" font-size="8" fill="#3a3428">Hall 1750 m3 - Corne borosilicate - Bambou - Cavite PE rotomoulee</text>
 <!-- Corps principal - Feutre PET -->
 <ellipse cx="360" cy="370" rx="200" ry="145" fill="#4a3c2c"/>
 <ellipse cx="530" cy="305" rx="88" ry="72" fill="#4a3c2c"/>

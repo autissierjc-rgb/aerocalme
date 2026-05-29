@@ -1021,21 +1021,11 @@
 
     resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    const SYSTEM_PROMPT = `Tu es l'assistant de pré-création AéroCalme. Mission : Transformer les informations fournies par un prospect en pré-vision de projet pour une installation acoustique suspendue monumentale. AéroCalme conçoit des sculptures acoustiques suspendues pour grands volumes : planètes, nuages, halos, vagues, constellations, formes sur mesure. Règles : ne jamais garantir une baisse de décibels, ne jamais promettre une performance chiffrée sans mesure, toujours préciser que la pré-vision est non contractuelle, parler de réduction de réverbération et confort sonore. Sortie : 1.Nom du projet 2.Lecture du lieu 3.Concept proposé 4.Formes recommandées 5.Matériaux probables 6.Logique d'implantation 7.Effet acoustique recherché 8.Complexité : simple/intermédiaire/monumental 9.Étapes suivantes 10.Disclaimer`;
-
     try {
-      const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      const resp = await fetch('/api/prevision', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': '',
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-calls': 'true',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-opus-4-7',
-          max_tokens: 2048,
-          system: SYSTEM_PROMPT,
           messages: [{ role: 'user', content: userContent }],
         }),
       });

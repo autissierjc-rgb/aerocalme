@@ -685,10 +685,10 @@
     .concept-slide-active { display: block; }
 
     .concept-nav-btn {
-      position: absolute;
+      position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,.55);
+      background: rgba(0,0,0,.7);
       border: 1px solid var(--gold);
       color: var(--gold);
       font-size: 1.8rem;
@@ -696,13 +696,13 @@
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer;
-      z-index: 10;
+      z-index: 2100;
       transition: background .2s, color .2s;
       padding: 0;
     }
     .concept-nav-btn:hover { background: var(--gold); color: #000; }
-    .concept-nav-prev { left: .8rem; }
-    .concept-nav-next { right: .8rem; }
+    .concept-nav-prev { left: 1rem; }
+    .concept-nav-next { right: 1rem; }
 
     .concept-label {
       position: absolute;
@@ -769,10 +769,10 @@
 
 <!-- ═══════════════════════════ MODALE CONCEPT ══════════════════════════ -->
 <div class="concept-modal" id="concept-modal">
+  <button class="concept-nav-btn concept-nav-prev" id="concept-prev" aria-label="Précédent">&#8249;</button>
+  <button class="concept-nav-btn concept-nav-next" id="concept-next" aria-label="Suivant">&#8250;</button>
   <div class="concept-modal-inner">
     <button class="concept-modal-close" id="concept-modal-close" aria-label="Fermer">&times;</button>
-    <button class="concept-nav-btn concept-nav-prev" id="concept-prev" aria-label="Précédent">&#8249;</button>
-    <button class="concept-nav-btn concept-nav-next" id="concept-next" aria-label="Suivant">&#8250;</button>
     <div class="concept-label" id="concept-label">Licorne Acoustique</div>
     <div class="concept-slides-wrap">
       <div class="concept-slide concept-slide-active">
@@ -1124,6 +1124,8 @@
     <div class="carousel-track" id="carousel-track">
       <div class="carousel-slide"><img src="./nuage1.png"                         alt="Nuage acoustique 1" /></div>
       <div class="carousel-slide"><img src="./nuage2.png"                         alt="Nuage acoustique 2" /></div>
+      <div class="carousel-slide"><img src="./sclupture-tube.png"                 alt="Sculpture tubes 1" /></div>
+      <div class="carousel-slide"><img src="./sclupture-tube2.png"                alt="Sculpture tubes 2" /></div>
       <div class="carousel-slide"><img src="./unicolor-planetes.png"              alt="Unicolor planètes" /></div>
       <div class="carousel-slide"><img src="./original_station_f.jpg"             alt="Station acoustique" /></div>
       <div class="carousel-slide"><img src="./licorne_suspendue_v1.png"           alt="Licorne suspendue" /></div>
@@ -1135,6 +1137,8 @@
     <button class="carousel-arrow carousel-next" aria-label="Suivant">&#8250;</button>
     <div class="carousel-dots">
       <span class="carousel-dot active"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
       <span class="carousel-dot"></span>
       <span class="carousel-dot"></span>
       <span class="carousel-dot"></span>

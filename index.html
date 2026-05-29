@@ -261,22 +261,6 @@
       object-fit: cover;
     }
 
-    /* API key field */
-    .api-key-section {
-      background: rgba(200,149,26,.05);
-      border: 1px solid var(--gold-dim);
-      border-radius: 2px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .api-key-section p {
-      font-size: .8rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      margin-top: .5rem;
-      line-height: 1.6;
-    }
-
     .btn-submit {
       display: block;
       width: 100%;
@@ -725,17 +709,7 @@
       de concept acoustique sur mesure, non contractuelle.
     </p>
 
-    <div class="api-key-section">
-      <div class="field">
-        <label>Clé API Anthropic</label>
-        <input type="password" id="api-key" placeholder="sk-ant-…" autocomplete="off" />
-      </div>
-      <p>
-        Votre clé est utilisée uniquement pour cet appel, directement depuis votre navigateur.
-        Elle n'est ni stockée ni transmise à nos serveurs.
-        Obtenez une clé sur <strong style="color:var(--gold-light)">console.anthropic.com</strong>.
-      </p>
-    </div>
+
 
     <div class="form-card">
       <form id="prevision-form">
@@ -990,7 +964,6 @@
     e.preventDefault();
     hideError();
 
-    const apiKey  = document.getElementById('api-key').value.trim();
     const lieuType = document.getElementById('lieu-type').value;
     const surface  = document.getElementById('surface').value;
     const hauteur  = document.getElementById('hauteur').value;
@@ -1000,7 +973,6 @@
     const email    = document.getElementById('email').value.trim();
     const photoFile = photoInput.files[0];
 
-    if (!apiKey) { showError('Veuillez saisir votre clé API Anthropic.'); return; }
     if (!lieuType) { showError('Veuillez sélectionner le type de lieu.'); return; }
     if (!surface || !hauteur) { showError('Veuillez renseigner la surface et la hauteur du lieu.'); return; }
     if (!probleme) { showError('Veuillez décrire le problème acoustique rencontré.'); return; }
@@ -1056,7 +1028,7 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': apiKey,
+          'x-api-key': '',
           'anthropic-version': '2023-06-01',
           'anthropic-dangerous-direct-browser-calls': 'true',
         },

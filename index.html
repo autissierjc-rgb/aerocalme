@@ -680,6 +680,62 @@
     }
     .concept-modal-close:hover { color: #fff; }
 
+    .concept-slides-wrap { overflow: hidden; }
+    .concept-slide { display: none; }
+    .concept-slide-active { display: block; }
+
+    .concept-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,.55);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.8rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background .2s, color .2s;
+      padding: 0;
+    }
+    .concept-nav-btn:hover { background: var(--gold); color: #000; }
+    .concept-nav-prev { left: .8rem; }
+    .concept-nav-next { right: .8rem; }
+
+    .concept-label {
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      z-index: 10;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .concept-dots-bar {
+      display: flex;
+      justify-content: center;
+      gap: .6rem;
+      padding: .8rem 0 .5rem;
+      background: #08070a;
+    }
+    .concept-dot-btn {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .concept-dot-active { background: var(--gold); }
+
     /* ── RESPONSIVE ──────────────────────────────────────────────────── */
     @media (max-width: 640px) {
       .form-card { padding: 2rem 1.5rem; }
@@ -715,6 +771,11 @@
 <div class="concept-modal" id="concept-modal">
   <div class="concept-modal-inner">
     <button class="concept-modal-close" id="concept-modal-close" aria-label="Fermer">&times;</button>
+    <button class="concept-nav-btn concept-nav-prev" id="concept-prev" aria-label="Précédent">&#8249;</button>
+    <button class="concept-nav-btn concept-nav-next" id="concept-next" aria-label="Suivant">&#8250;</button>
+    <div class="concept-label" id="concept-label">Licorne Acoustique</div>
+    <div class="concept-slides-wrap">
+      <div class="concept-slide concept-slide-active">
     <svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" style="background:#08070a">
 <text x="500" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#C8951A" letter-spacing="3">COUPE ANATOMIQUE · LICORNE ACOUSTIQUE AÉROCALME · GRANDS VOLUMES</text>
 <text x="500" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="#3a3428" letter-spacing="2">Dimensions réelles pour hall 1750 m³ · Corne borosilicate · Jambes bambou · Cavité PE rotomoulée</text>
@@ -903,6 +964,157 @@
 <text x="716" y="575" font-family="Arial" font-size="8" fill="#6a5848">captation maximale</text>
 <text x="500" y="692" text-anchor="middle" font-family="Arial" font-size="8" fill="#2a2018" letter-spacing="1">Schéma indicatif non contractuel · AéroCalme 2026 · Dimensions pour hall 1750 m³ · *performances sans mesure acoustique sur site</text>
     </svg>
+      </div><!-- /concept-slide 1 -->
+      <div class="concept-slide">
+        <svg width="1000" height="680" viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg" style="background:#08070a">
+<text x="500" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#C8951A" letter-spacing="3">COUPE ANATOMIQUE · SOLEIL ACOUSTIQUE AÉROCALME</text>
+<text x="500" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="#3a3428" letter-spacing="2">Cœur mousse mélamine · Tubes borosilicate Helmholtz · Cavité PE · Station F</text>
+<g stroke="rgba(180,220,255,0.55)" stroke-width="12" stroke-linecap="round" fill="none">
+  <line x1="360" y1="330" x2="360" y2="130"/>
+  <line x1="360" y1="330" x2="360" y2="530"/>
+  <line x1="360" y1="330" x2="560" y2="330"/>
+  <line x1="360" y1="330" x2="160" y2="330"/>
+  <line x1="360" y1="330" x2="501" y2="189"/>
+  <line x1="360" y1="330" x2="219" y2="189"/>
+  <line x1="360" y1="330" x2="501" y2="471"/>
+  <line x1="360" y1="330" x2="219" y2="471"/>
+  <line x1="360" y1="330" x2="530" y2="245"/>
+  <line x1="360" y1="330" x2="190" y2="245"/>
+  <line x1="360" y1="330" x2="530" y2="415"/>
+  <line x1="360" y1="330" x2="190" y2="415"/>
+  <line x1="360" y1="330" x2="445" y2="145"/>
+  <line x1="360" y1="330" x2="275" y2="145"/>
+  <line x1="360" y1="330" x2="445" y2="515"/>
+  <line x1="360" y1="330" x2="275" y2="515"/>
+</g>
+<g stroke="rgba(255,255,255,0.22)" stroke-width="3" stroke-linecap="round" fill="none">
+  <line x1="356" y1="330" x2="356" y2="135"/>
+  <line x1="356" y1="330" x2="356" y2="525"/>
+  <line x1="356" y1="330" x2="556" y2="330"/>
+  <line x1="356" y1="330" x2="164" y2="330"/>
+  <line x1="356" y1="330" x2="496" y2="193"/>
+  <line x1="356" y1="330" x2="224" y2="193"/>
+</g>
+<g fill="rgba(200,230,255,0.35)" stroke="rgba(180,220,255,0.7)" stroke-width="1.2">
+  <ellipse cx="360" cy="130" rx="8" ry="4"/>
+  <ellipse cx="360" cy="530" rx="8" ry="4"/>
+  <ellipse cx="560" cy="330" rx="4" ry="8"/>
+  <ellipse cx="160" cy="330" rx="4" ry="8"/>
+  <ellipse cx="501" cy="189" rx="6" ry="6" transform="rotate(-45,501,189)"/>
+  <ellipse cx="219" cy="189" rx="6" ry="6" transform="rotate(45,219,189)"/>
+  <ellipse cx="501" cy="471" rx="6" ry="6" transform="rotate(45,501,471)"/>
+  <ellipse cx="219" cy="471" rx="6" ry="6" transform="rotate(-45,219,471)"/>
+  <ellipse cx="530" cy="245" rx="5" ry="7" transform="rotate(-25,530,245)"/>
+  <ellipse cx="190" cy="245" rx="5" ry="7" transform="rotate(25,190,245)"/>
+  <ellipse cx="530" cy="415" rx="5" ry="7" transform="rotate(25,530,415)"/>
+  <ellipse cx="190" cy="415" rx="5" ry="7" transform="rotate(-25,190,415)"/>
+</g>
+<circle cx="360" cy="330" r="108" fill="#8a7240"/>
+<circle cx="360" cy="330" r="90" fill="#7a9a6a"/>
+<circle cx="360" cy="330" r="62" fill="#5a7080"/>
+<g fill="#90b8e0" stroke="#3a5878" stroke-width="0.8" opacity="0.9">
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(0,360,330)"/>
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(45,360,330)"/>
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(90,360,330)"/>
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(135,360,330)"/>
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(180,360,330)"/>
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(225,360,330)"/>
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(270,360,330)"/>
+  <rect x="353" y="252" width="14" height="78" rx="4" transform="rotate(315,360,330)"/>
+</g>
+<circle cx="360" cy="330" r="36" fill="#4878a0"/>
+<circle cx="360" cy="330" r="36" fill="url(#goldgrad2)"/>
+<defs>
+  <radialGradient id="goldgrad2" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#e8c860" stop-opacity="0.8"/>
+    <stop offset="60%" stop-color="#b89030" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#4878a0" stop-opacity="0"/>
+  </radialGradient>
+  <marker id="arrg2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M1 1L9 5L1 9" fill="none" stroke="#C8951A" stroke-width="1.5" stroke-linecap="round"/>
+  </marker>
+</defs>
+<circle cx="360" cy="330" r="108" fill="none" stroke="#5a4820" stroke-width="1.5"/>
+<circle cx="360" cy="330" r="90" fill="none" stroke="#5a7848" stroke-width="0.5" stroke-dasharray="5,3"/>
+<circle cx="360" cy="330" r="62" fill="none" stroke="#4a6070" stroke-width="1"/>
+<circle cx="360" cy="330" r="36" fill="none" stroke="#3a6888" stroke-width="1.2"/>
+<g fill="#c8a830" stroke="#8a7020" stroke-width="0.5">
+  <circle cx="360" cy="222" r="7"/><circle cx="360" cy="438" r="7"/>
+  <circle cx="468" cy="330" r="7"/><circle cx="252" cy="330" r="7"/>
+  <circle cx="438" cy="252" r="7"/><circle cx="282" cy="252" r="7"/>
+  <circle cx="438" cy="408" r="7"/><circle cx="282" cy="408" r="7"/>
+  <circle cx="456" cy="288" r="6"/><circle cx="264" cy="288" r="6"/>
+  <circle cx="456" cy="372" r="6"/><circle cx="264" cy="372" r="6"/>
+</g>
+<line x1="360" y1="222" x2="360" y2="168" stroke="#a0b8c8" stroke-width="3" stroke-linecap="round"/>
+<line x1="360" y1="170" x2="360" y2="148" stroke="#a0b8c8" stroke-width="2"/>
+<ellipse cx="360" cy="145" rx="16" ry="6" fill="#5a7080"/>
+<text x="382" y="142" font-family="Arial" font-size="8.5" fill="#7a9aaa">Câble inox Ø 3mm</text>
+<path d="M570 310 Q582 320 570 330" fill="none" stroke="#C8951A" stroke-width="1.2" opacity="0.8"/>
+<path d="M578 305 Q594 320 578 335" fill="none" stroke="#C8951A" stroke-width="1" opacity="0.55"/>
+<path d="M586 300 Q606 320 586 340" fill="none" stroke="#C8951A" stroke-width="0.8" opacity="0.3"/>
+<line x1="570" y1="320" x2="560" y2="320" stroke="#C8951A" stroke-width="1.2" marker-end="url(#arrg2)"/>
+<text x="592" y="356" font-family="Arial" font-size="8" fill="#C8951A">ondes</text>
+<text x="592" y="367" font-family="Arial" font-size="8" fill="#C8951A">80–200 Hz</text>
+<text x="620" y="82" font-family="Arial" font-size="9" fill="#C8951A" letter-spacing="2">MATÉRIAUX</text>
+<rect x="620" y="90" width="16" height="11" rx="2" fill="rgba(180,220,255,0.5)" stroke="rgba(180,220,255,0.7)" stroke-width="1"/>
+<text x="642" y="100" font-family="Arial" font-size="9" fill="#c0bcb0">Tubes borosilicate · Ø25mm · L=600mm</text>
+<text x="642" y="111" font-family="Arial" font-size="8" fill="#5a5848">Canal axial ouvert · embout pavillon · basses fréq.</text>
+<rect x="620" y="118" width="16" height="11" rx="2" fill="#8a7240"/>
+<text x="642" y="128" font-family="Arial" font-size="9" fill="#c0bcb0">Feutre PET acoustique · 18mm · teinte dorée</text>
+<rect x="620" y="135" width="16" height="11" rx="2" fill="#7a9a6a"/>
+<text x="642" y="145" font-family="Arial" font-size="9" fill="#c0bcb0">Mousse mélamine Basotect® · 28mm · 9kg/m³</text>
+<rect x="620" y="152" width="16" height="11" rx="2" fill="#5a7080"/>
+<text x="642" y="162" font-family="Arial" font-size="9" fill="#c0bcb0">Cadre aluminium soudé CNC · 8mm</text>
+<rect x="620" y="169" width="16" height="11" rx="2" fill="#90b8e0"/>
+<text x="642" y="179" font-family="Arial" font-size="9" fill="#c0bcb0">Canaux Helmholtz PVC Ø40mm · L=280mm · ×8</text>
+<rect x="620" y="186" width="16" height="11" rx="2" fill="#4878a0"/>
+<text x="642" y="196" font-family="Arial" font-size="9" fill="#c0bcb0">Cavité PE centrale · 8 litres · parois rigides</text>
+<rect x="620" y="203" width="16" height="11" rx="2" fill="#c8a830"/>
+<text x="642" y="213" font-family="Arial" font-size="9" fill="#c0bcb0">Raccords laiton · jonction tube/sphère · étanche</text>
+<rect x="620" y="235" width="355" height="300" rx="5" fill="#0c0a08" stroke="#2a2018" stroke-width="0.8"/>
+<text x="797" y="256" text-anchor="middle" font-family="Arial" font-size="9" fill="#C8951A" letter-spacing="1.5">DOUBLE SYSTÈME D'ABSORPTION</text>
+<text x="630" y="276" font-family="Arial" font-size="8.5" fill="#c8d8f0" font-weight="bold">① TUBES BOROSILICATE — Helmholtz longue portée</text>
+<text x="630" y="290" font-family="Arial" font-size="8" fill="#6a6858">L = 600mm · Ø 25mm → f₀ ≈ 55–75 Hz</text>
+<text x="630" y="302" font-family="Arial" font-size="8" fill="#6a6858">16 tubes rayonnants = 16 résonateurs en parallèle</text>
+<text x="630" y="314" font-family="Arial" font-size="8" fill="#6a6858">Embout pavillon évasé → captation directionnelle</text>
+<text x="630" y="326" font-family="Arial" font-size="8" fill="#C8951A">→ Absorbe les basses fréquences de salle</text>
+<line x1="630" y1="334" x2="965" y2="334" stroke="#2a2018" stroke-width="0.5"/>
+<text x="630" y="350" font-family="Arial" font-size="8.5" fill="#90b8e0" font-weight="bold">② CANAUX INTERNES — Helmholtz courte portée</text>
+<text x="630" y="364" font-family="Arial" font-size="8" fill="#6a6858">L = 280mm · Ø 40mm → f₀ ≈ 100–160 Hz</text>
+<text x="630" y="376" font-family="Arial" font-size="8" fill="#6a6858">8 canaux corps → cavité PE 8L fermée</text>
+<text x="630" y="388" font-family="Arial" font-size="8" fill="#6a6858">Complète la bande non couverte par les tubes</text>
+<text x="630" y="400" font-family="Arial" font-size="8" fill="#C8951A">→ Absorbe les médiums-graves</text>
+<line x1="630" y1="408" x2="965" y2="408" stroke="#2a2018" stroke-width="0.5"/>
+<text x="630" y="424" font-family="Arial" font-size="8.5" fill="#7a9a6a" font-weight="bold">③ MOUSSE MÉLAMINE — Absorption large bande</text>
+<text x="630" y="438" font-family="Arial" font-size="8" fill="#6a6858">Basotect® 28mm entre feutre PET et cadre alu</text>
+<text x="630" y="450" font-family="Arial" font-size="8" fill="#6a6858">Coefficient α > 0.85 sur 500 Hz – 4 kHz</text>
+<text x="630" y="462" font-family="Arial" font-size="8" fill="#6a6858">Absorbe les médiums et aigus</text>
+<text x="630" y="474" font-family="Arial" font-size="8" fill="#C8951A">→ Absorbe voix, brouhaha, fréquences de parole</text>
+<line x1="630" y1="482" x2="965" y2="482" stroke="#2a2018" stroke-width="0.5"/>
+<text x="630" y="498" font-family="Arial" font-size="8.5" fill="#e8e4d8">Couverture totale combinée :</text>
+<text x="630" y="512" font-family="Arial" font-size="9" fill="#C8951A" font-weight="bold">55 Hz → 4 kHz  ·  α moyen ≈ 0.80</text>
+<text x="630" y="524" font-family="Arial" font-size="8" fill="#4a4838">*estimation indicative sans mesure sur site</text>
+<line x1="360" y1="330" x2="360" y2="130" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="3,3" opacity="0.5"/>
+<line x1="355" y1="130" x2="365" y2="130" stroke="#C8951A" stroke-width="1"/>
+<line x1="355" y1="222" x2="365" y2="222" stroke="#C8951A" stroke-width="1"/>
+<text x="370" y="178" font-family="Arial" font-size="8" fill="#C8951A">600mm</text>
+<text x="370" y="189" font-family="Arial" font-size="7.5" fill="#6a6858">tube boros.</text>
+<line x1="252" y1="330" x2="360" y2="330" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="3,3" opacity="0.5"/>
+<text x="290" y="320" font-family="Arial" font-size="8" fill="#5a4820">Ø sphère</text>
+<text x="290" y="331" font-family="Arial" font-size="8" fill="#5a4820">= 216mm</text>
+<line x1="160" y1="560" x2="560" y2="560" stroke="#C8951A" stroke-width="0.8"/>
+<line x1="160" y1="555" x2="160" y2="565" stroke="#C8951A" stroke-width="1"/>
+<line x1="560" y1="555" x2="560" y2="565" stroke="#C8951A" stroke-width="1"/>
+<text x="360" y="575" text-anchor="middle" font-family="Arial" font-size="9" fill="#C8951A">Ø total ≈ 1.4m (sphère + tubes)</text>
+<text x="500" y="664" text-anchor="middle" font-family="Arial" font-size="8" fill="#2a2018" letter-spacing="1">Schéma indicatif non contractuel · AéroCalme 2026 · Dimensions pour hall 1750 m³</text>
+        </svg>
+      </div><!-- /concept-slide 2 -->
+    </div><!-- /concept-slides-wrap -->
+    <div class="concept-dots-bar">
+      <span class="concept-dot-btn concept-dot-active"></span>
+      <span class="concept-dot-btn"></span>
+    </div>
   </div>
 </div>
 
@@ -1416,14 +1628,38 @@
 
 /* ── Modale Voir Concept ───────────────────────────────────────────── */
 (function () {
-  const btn   = document.getElementById('btn-voir-concept');
-  const modal = document.getElementById('concept-modal');
-  const close = document.getElementById('concept-modal-close');
+  const btn    = document.getElementById('btn-voir-concept');
+  const modal  = document.getElementById('concept-modal');
+  const close  = document.getElementById('concept-modal-close');
+  const prev   = document.getElementById('concept-prev');
+  const next   = document.getElementById('concept-next');
+  const label  = document.getElementById('concept-label');
+  const slides = Array.from(document.querySelectorAll('.concept-slide'));
+  const dots   = Array.from(document.querySelectorAll('.concept-dot-btn'));
+  const labels = ['Licorne Acoustique', 'Soleil Acoustique'];
+  let current = 0;
 
-  btn.addEventListener('click', () => modal.classList.add('active'));
+  function goTo(idx) {
+    slides[current].classList.remove('concept-slide-active');
+    dots[current].classList.remove('concept-dot-active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('concept-slide-active');
+    dots[current].classList.add('concept-dot-active');
+    label.textContent = labels[current];
+  }
+
+  btn.addEventListener('click', () => { goTo(0); modal.classList.add('active'); });
   close.addEventListener('click', () => modal.classList.remove('active'));
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('active'); });
+  prev.addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); });
+  next.addEventListener('click', e => { e.stopPropagation(); goTo(current + 1); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { modal.classList.remove('active'); return; }
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft')  prev.click();
+    if (e.key === 'ArrowRight') next.click();
+  });
 })();
 </script>
 </body>

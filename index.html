@@ -684,6 +684,28 @@
     .concept-slide { display: none; }
     .concept-slide-active { display: block; }
 
+    .concept-svg-title {
+      background: #08070a;
+      padding: .7rem 1.5rem .4rem;
+      text-align: center;
+    }
+    .concept-svg-title-main {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: .8rem;
+      font-weight: 400;
+      letter-spacing: .1em;
+      color: var(--gold);
+    }
+    .concept-svg-title-sub {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: .65rem;
+      color: #3a3428;
+      letter-spacing: .05em;
+      margin-top: .2rem;
+    }
+
     .concept-nav-btn {
       position: fixed;
       top: 50%;
@@ -776,10 +798,11 @@
     <div class="concept-label" id="concept-label">Licorne Acoustique</div>
     <div class="concept-slides-wrap">
       <div class="concept-slide concept-slide-active">
-    <svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" style="background:#08070a">
-<text x="500" y="24" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#C8951A" letter-spacing="1">COUPE ANATOMIQUE — LICORNE ACOUSTIQUE AEROCALME</text>
-<text x="500" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#C8951A" letter-spacing="1">GRANDS VOLUMES</text>
-<text x="500" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#3a3428" letter-spacing="1">Hall 1750 m3 — Corne borosilicate — Bambou — Cavite PE rotomoulee</text>
+        <div class="concept-svg-title">
+          <span class="concept-svg-title-main">COUPE ANATOMIQUE — LICORNE ACOUSTIQUE AEROCALME</span>
+          <span class="concept-svg-title-sub">Grands volumes — Hall 1750 m3 — Corne borosilicate — Bambou — Cavite PE</span>
+        </div>
+    <svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" style="background:#08070a; display:block;">
 <ellipse cx="360" cy="370" rx="200" ry="145" fill="#4a3c2c"/>
 <ellipse cx="530" cy="305" rx="88" ry="72" fill="#4a3c2c"/>
 <path d="M452 318 Q482 358 460 382 L418 377 Q425 348 442 323Z" fill="#4a3c2c"/>
@@ -967,9 +990,11 @@
     </svg>
       </div><!-- /concept-slide 1 -->
       <div class="concept-slide">
-        <svg width="1000" height="680" viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg" style="background:#08070a">
-<text x="500" y="24" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#C8951A" letter-spacing="1">COUPE ANATOMIQUE — SOLEIL ACOUSTIQUE AEROCALME</text>
-<text x="500" y="40" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#3a3428" letter-spacing="1">Coeur mousse melamine — Tubes borosilicate Helmholtz — Cavite PE — Station F</text>
+        <div class="concept-svg-title">
+          <span class="concept-svg-title-main">COUPE ANATOMIQUE — SOLEIL ACOUSTIQUE AEROCALME</span>
+          <span class="concept-svg-title-sub">Coeur mousse melamine — Tubes borosilicate Helmholtz — Cavite PE — Station F</span>
+        </div>
+        <svg width="1000" height="680" viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg" style="background:#08070a; display:block;">
 <g stroke="rgba(180,220,255,0.55)" stroke-width="12" stroke-linecap="round" fill="none">
   <line x1="360" y1="330" x2="360" y2="130"/>
   <line x1="360" y1="330" x2="360" y2="530"/>

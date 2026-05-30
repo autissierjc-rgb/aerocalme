@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AéroCalme — Sculptures acoustiques suspendues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -499,6 +502,83 @@
       margin: 0;
     }
 
+    /* ── SECTION ARGUMENT ────────────────────────────────────────────────── */
+    .section-argument {
+      background: #0a0a14;
+      padding: 5rem 2rem 5.5rem;
+      text-align: center;
+      border-top: 1px solid #16162a;
+      border-bottom: 1px solid #16162a;
+    }
+
+    .section-argument-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .section-argument-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.18;
+      margin-bottom: 1.8rem;
+      letter-spacing: -.01em;
+    }
+
+    .section-argument-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .section-argument-sub {
+      font-size: clamp(.95rem, 2vw, 1.15rem);
+      color: var(--gold);
+      font-weight: 300;
+      letter-spacing: .06em;
+      margin-bottom: 3.5rem;
+      line-height: 1.6;
+    }
+
+    .section-argument-cards {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .section-argument-card {
+      flex: 1;
+      max-width: 230px;
+      background: rgba(200,149,26,.05);
+      border: 1px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 2rem 1.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .9rem;
+      transition: border-color .2s, background .2s;
+    }
+    .section-argument-card:hover {
+      border-color: var(--gold);
+      background: rgba(200,149,26,.09);
+    }
+
+    .card-icon { font-size: 2rem; line-height: 1; }
+
+    .card-text {
+      font-size: .88rem;
+      color: var(--text);
+      font-weight: 300;
+      letter-spacing: .04em;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 640px) {
+      .section-argument-cards { flex-direction: column; align-items: center; }
+      .section-argument-card  { max-width: 100%; width: 100%; }
+    }
+
     /* ── CAROUSEL ────────────────────────────────────────────────────────── */
     .carousel-section {
       background: #06060f;
@@ -854,6 +934,32 @@
   <img class="lightbox-img" id="lightbox-img" alt="" />
   <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Suivant">&#8250;</button>
 </div>
+
+<!-- ═══════════════════════════ SECTION ARGUMENT ════════════════════════ -->
+<section class="section-argument">
+  <div class="section-argument-inner">
+    <h2 class="section-argument-title">
+      Votre acousticien vous a dit que votre <em>façade vitrée</em><br>est un problème insoluble&nbsp;?
+    </h2>
+    <p class="section-argument-sub">
+      AéroCalme est la seule solution qui ne touche pas à votre architecture.
+    </p>
+    <div class="section-argument-cards">
+      <div class="section-argument-card">
+        <span class="card-icon">🪟</span>
+        <span class="card-text">Façades vitrées intouchables</span>
+      </div>
+      <div class="section-argument-card">
+        <span class="card-icon">📐</span>
+        <span class="card-text">Hauteurs inaccessibles</span>
+      </div>
+      <div class="section-argument-card">
+        <span class="card-icon">🏛</span>
+        <span class="card-text">Architecture protégée classée</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════ FORMULAIRE ══════════════════════════════ -->
 <div id="prevision">

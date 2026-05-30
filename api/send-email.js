@@ -4,7 +4,8 @@ module.exports = async function handler(req, res) {
   const {
     nom, email, tel, msg,
     previsionText,
-    lieuType, surface, hauteur, style, budget, probleme
+    lieuType, surface, hauteur, style, budget, probleme,
+    subjectOverride,
   } = req.body || {};
 
   const RESEND_KEY = process.env.RESEND_API_KEY;
@@ -67,7 +68,7 @@ module.exports = async function handler(req, res) {
       to: ['contact@aerocalme.fr'],
       cc: ['autissierjc@gmail.com'],
       reply_to: email || undefined,
-      subject: `Devis AéroCalme — ${nom || 'Prospect'} — ${lieuType || ''}`,
+      subject: subjectOverride || `Devis AéroCalme — ${nom || 'Prospect'} — ${lieuType || ''}`,
       html: internalHtml,
     });
     if (!r1.ok) {

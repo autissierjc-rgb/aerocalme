@@ -1318,6 +1318,26 @@
       resultText.innerHTML = renderMarkdown(rawText);
       devisSection.classList.add('active');
 
+      /* Envoi email automatique après génération (fire-and-forget) */
+      fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom:           '',
+          email:         _lastFormData.email,
+          tel:           '',
+          msg:           '',
+          previsionText: rawText,
+          lieuType:      _lastFormData.lieuType,
+          surface:       _lastFormData.surface,
+          hauteur:       _lastFormData.hauteur,
+          style:         _lastFormData.style,
+          budget:        _lastFormData.budget,
+          probleme:      _lastFormData.probleme,
+          subjectOverride: `Nouvelle pré-vision AéroCalme — ${_lastFormData.lieuType || 'Prospect'}`,
+        }),
+      }).catch(() => {}); /* silencieux — ne bloque pas l'UI */
+
     } catch (err) {
       loadingEl.classList.remove('active');
       showError(`Erreur lors de la génération : ${err.message}`);

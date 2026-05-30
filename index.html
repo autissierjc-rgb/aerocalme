@@ -1215,6 +1215,10 @@
     return html;
   }
 
+  /* Stockage de la dernière pré-vision pour l'email */
+  let _lastPrevisionText = '';
+  let _lastFormData = {};
+
   /* ── Form submission ───────────────────────────────────────────────── */
   const form       = document.getElementById('prevision-form');
   const submitBtn  = document.getElementById('submit-btn');
@@ -1240,6 +1244,7 @@
     const budget   = document.getElementById('budget').value;
     const email    = document.getElementById('email').value.trim();
     const photoFile = photoInput.files[0];
+    _lastFormData = { lieuType, surface, hauteur, probleme, style, budget, email };
 
     if (!lieuType) { showError('Veuillez sélectionner le type de lieu.'); return; }
     if (!surface || !hauteur) { showError('Veuillez renseigner la surface et la hauteur du lieu.'); return; }
@@ -1306,6 +1311,7 @@
 
       const data    = await resp.json();
       const rawText = data?.content?.[0]?.text || '';
+      _lastPrevisionText = rawText;
 
       loadingEl.classList.remove('active');
       resultContent.classList.add('active');
@@ -1336,19 +1342,39 @@
     if (devisOpen) devisForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  devisSubmitBtn.addEventListener('click', () => {
+  devisSubmitBtn.addEventListener('click', async () => {
     const nom   = document.getElementById('devis-nom').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const email = _lastFormData.email || document.getElementById('email').value.trim();
     const tel   = document.getElementById('devis-tel').value.trim();
     const msg   = document.getElementById('devis-msg').value.trim();
 
-    const subject = encodeURIComponent('Demande de devis AéroCalme');
-    const body = encodeURIComponent(
-      `Nom / Société : ${nom}\nEmail : ${email}\nTéléphone : ${tel}\n\n${msg}`
-    );
-    window.location.href = `mailto:contact@aerocalme.fr?subject=${subject}&body=${body}`;
-    devisConfirm.style.display = 'block';
     devisSubmitBtn.disabled = true;
+    devisSubmitBtn.textContent = 'Envoi en cours…';
+
+    try {
+      const resp = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom, email, tel, msg,
+          previsionText: _lastPrevisionText,
+          lieuType:  _lastFormData.lieuType,
+          surface:   _lastFormData.surface,
+          hauteur:   _lastFormData.hauteur,
+          style:     _lastFormData.style,
+          budget:    _lastFormData.budget,
+          probleme:  _lastFormData.probleme,
+        }),
+      });
+      if (!resp.ok) throw new Error((await resp.json().catch(()=>({}))).error || `Erreur ${resp.status}`);
+      devisConfirm.style.display = 'block';
+      devisSubmitBtn.textContent = 'Envoyé';
+    } catch (err) {
+      devisConfirm.style.display = 'none';
+      devisSubmitBtn.disabled = false;
+      devisSubmitBtn.textContent = 'Envoyer la demande';
+      alert('Erreur lors de l\'envoi : ' + err.message);
+    }
   });
 
 })();

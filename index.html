@@ -777,8 +777,29 @@
       display: block;
       width: 100%;
       background: #08070a;
-      cursor: zoom-in;
+      cursor: default;
     }
+
+    .concept-expand-btn {
+      position: absolute;
+      top: .6rem;
+      right: .6rem;
+      width: 28px;
+      height: 28px;
+      background: rgba(0,0,0,.6);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: .75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      transition: background .2s, border-color .2s;
+      border-radius: 2px;
+    }
+    .concept-expand-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+    .concept-slide { position: relative; }
 
     .concept-zoom-hint {
       background: #08070a;
@@ -927,10 +948,12 @@
     </div>
     <div class="concept-slides-wrap">
       <div class="concept-slide concept-slide-active">
-        <img src="./soleil.svg" alt="Coupe sphere Soleil AeroCalme" class="concept-img" title="Cliquez pour agrandir">
+        <button class="concept-expand-btn" aria-label="Plein écran">&#x26F6;</button>
+        <img src="./soleil.svg" alt="Coupe sphere Soleil AeroCalme" class="concept-img">
       </div><!-- /concept-slide 1 -->
       <div class="concept-slide">
-        <img src="./licorne.svg" alt="Coupe Licorne AeroCalme" class="concept-img" title="Cliquez pour agrandir">
+        <button class="concept-expand-btn" aria-label="Plein écran">&#x26F6;</button>
+        <img src="./licorne.svg" alt="Coupe Licorne AeroCalme" class="concept-img">
       </div><!-- /concept-slide 2 -->
     </div><!-- /concept-slides-wrap -->
     <div class="concept-dots-bar">
@@ -1555,9 +1578,11 @@
 
   btn.addEventListener('click', () => { goTo(0); modal.classList.add('active'); });
 
-  /* Zoom clic sur image → lightbox plein écran */
-  document.querySelectorAll('.concept-img').forEach(img => {
-    img.addEventListener('click', () => {
+  /* Bouton carré → lightbox plein écran */
+  document.querySelectorAll('.concept-expand-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const img   = btn.nextElementSibling;
       const lb    = document.getElementById('lightbox');
       const lbImg = document.getElementById('lightbox-img');
       lbImg.src = img.src;

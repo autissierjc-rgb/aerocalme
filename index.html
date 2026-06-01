@@ -748,6 +748,49 @@
       max-width: 100%;
       height: auto;
     }
+    .concept-modal-inner {
+      max-width: min(95vw, 1100px) !important;
+    }
+
+    .concept-header {
+      background: #08070a;
+      padding: 1.1rem 2rem .8rem;
+      border-bottom: 1px solid var(--gold-dim);
+      text-align: center;
+    }
+    .concept-header-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: .05em;
+    }
+    .concept-header-sub {
+      font-size: .75rem;
+      color: var(--text-muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-top: .3rem;
+    }
+
+    .concept-img {
+      display: block;
+      width: 100%;
+      background: #08070a;
+      cursor: zoom-in;
+    }
+
+    .concept-zoom-hint {
+      background: #08070a;
+      text-align: center;
+      font-size: .65rem;
+      color: var(--text-muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .5rem;
+      border-top: 1px solid #16161e;
+    }
+
     .concept-modal-close {
       position: absolute;
       top: 1rem;
@@ -878,19 +921,23 @@
   <button class="concept-nav-btn concept-nav-next" id="concept-next" aria-label="Suivant">&#8250;</button>
   <div class="concept-modal-inner">
     <button class="concept-modal-close" id="concept-modal-close" aria-label="Fermer">&times;</button>
-    <div class="concept-label" id="concept-label">Licorne Acoustique</div>
+    <div class="concept-header">
+      <div class="concept-header-title">Anatomie de la sph&egrave;re acoustique A&eacute;roCalme</div>
+      <div class="concept-header-sub" id="concept-label">Sph&egrave;re Soleil &mdash; Tubes borosilicate Helmholtz</div>
+    </div>
     <div class="concept-slides-wrap">
       <div class="concept-slide concept-slide-active">
-        <img src="./soleil.svg" alt="Coupe anatomique Soleil Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
+        <img src="./soleil.svg" alt="Coupe sphere Soleil AeroCalme" class="concept-img" title="Cliquez pour agrandir">
       </div><!-- /concept-slide 1 -->
       <div class="concept-slide">
-        <img src="./licorne.svg" alt="Coupe anatomique Licorne Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
+        <img src="./licorne.svg" alt="Coupe Licorne AeroCalme" class="concept-img" title="Cliquez pour agrandir">
       </div><!-- /concept-slide 2 -->
     </div><!-- /concept-slides-wrap -->
     <div class="concept-dots-bar">
       <span class="concept-dot-btn concept-dot-active"></span>
       <span class="concept-dot-btn"></span>
     </div>
+    <div class="concept-zoom-hint">Cliquez sur le sch&eacute;ma pour l&apos;agrandir en plein &eacute;cran</div>
   </div>
 </div>
 
@@ -1494,7 +1541,7 @@
   const label  = document.getElementById('concept-label');
   const slides = Array.from(document.querySelectorAll('.concept-slide'));
   const dots   = Array.from(document.querySelectorAll('.concept-dot-btn'));
-  const labels = ['Soleil Acoustique', 'Licorne Acoustique'];
+  const labels = ['Sphère Soleil — Tubes borosilicate Helmholtz', 'Licorne Acoustique — Corne borosilicate Bambou'];
   let current = 0;
 
   function goTo(idx) {
@@ -1507,6 +1554,17 @@
   }
 
   btn.addEventListener('click', () => { goTo(0); modal.classList.add('active'); });
+
+  /* Zoom clic sur image → lightbox plein écran */
+  document.querySelectorAll('.concept-img').forEach(img => {
+    img.addEventListener('click', () => {
+      const lb    = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('active');
+    });
+  });
   close.addEventListener('click', () => modal.classList.remove('active'));
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
   prev.addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); });

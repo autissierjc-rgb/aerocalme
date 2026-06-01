@@ -3,9 +3,6 @@
 <style>
 text { font-family: Arial, sans-serif; letter-spacing: 0; }
 </style>
-<!-- Titre -->
-<text x="500" y="26" text-anchor="middle" font-size="13" fill="#C8951A" style="font-family:Georgia,serif">Anatomie de la sphere acoustique AeroCalme</text>
-<text x="500" y="42" text-anchor="middle" font-size="8" fill="#3a3428">Coeur mousse melamine - Tubes borosilicate Helmholtz - Cavite PE - Station F</text>
 <!-- 16 tubes rayonnants borosilicate -->
 <g stroke="rgba(180,220,255,0.55)" stroke-width="12" stroke-linecap="round" fill="none">
   <line x1="360" y1="330" x2="360" y2="130"/>

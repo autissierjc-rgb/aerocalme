@@ -749,35 +749,19 @@
       height: auto;
     }
     .concept-modal-inner {
-      max-width: min(95vw, 1100px) !important;
-    }
-
-    .concept-header {
-      background: #08070a;
-      padding: 1.1rem 2rem .8rem;
-      border-bottom: 1px solid var(--gold-dim);
-      text-align: center;
-    }
-    .concept-header-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.15rem;
-      font-weight: 300;
-      color: var(--gold);
-      letter-spacing: .05em;
-    }
-    .concept-header-sub {
-      font-size: .75rem;
-      color: var(--text-muted);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-top: .3rem;
+      width: min(95vw, 1100px) !important;
+      max-height: 88vh !important;
+      overflow: hidden !important;
+      display: flex;
+      flex-direction: column;
     }
 
     .concept-img {
       display: block;
       width: 100%;
+      height: 100%;
+      object-fit: contain;
       background: #08070a;
-      cursor: default;
     }
 
     .concept-expand-btn {
@@ -827,9 +811,9 @@
     }
     .concept-modal-close:hover { color: #fff; }
 
-    .concept-slides-wrap { overflow: hidden; }
-    .concept-slide { display: none; }
-    .concept-slide-active { display: block; }
+    .concept-slides-wrap { overflow: hidden; flex: 1; min-height: 0; }
+    .concept-slide { display: none; height: 100%; }
+    .concept-slide-active { display: flex; align-items: center; justify-content: center; }
 
     .concept-svg-title {
       background: #08070a;
@@ -942,10 +926,6 @@
   <button class="concept-nav-btn concept-nav-next" id="concept-next" aria-label="Suivant">&#8250;</button>
   <div class="concept-modal-inner">
     <button class="concept-modal-close" id="concept-modal-close" aria-label="Fermer">&times;</button>
-    <div class="concept-header">
-      <div class="concept-header-title">Anatomie de la sph&egrave;re acoustique A&eacute;roCalme</div>
-      <div class="concept-header-sub" id="concept-label">Sph&egrave;re Soleil &mdash; Tubes borosilicate Helmholtz</div>
-    </div>
     <div class="concept-slides-wrap">
       <div class="concept-slide concept-slide-active">
         <button class="concept-expand-btn" aria-label="Plein écran">&#x26F6;</button>
@@ -960,7 +940,6 @@
       <span class="concept-dot-btn concept-dot-active"></span>
       <span class="concept-dot-btn"></span>
     </div>
-    <div class="concept-zoom-hint">Cliquez sur le sch&eacute;ma pour l&apos;agrandir en plein &eacute;cran</div>
   </div>
 </div>
 
@@ -1561,10 +1540,8 @@
   const close  = document.getElementById('concept-modal-close');
   const prev   = document.getElementById('concept-prev');
   const next   = document.getElementById('concept-next');
-  const label  = document.getElementById('concept-label');
   const slides = Array.from(document.querySelectorAll('.concept-slide'));
   const dots   = Array.from(document.querySelectorAll('.concept-dot-btn'));
-  const labels = ['Sphère Soleil — Tubes borosilicate Helmholtz', 'Licorne Acoustique — Corne borosilicate Bambou'];
   let current = 0;
 
   function goTo(idx) {
@@ -1573,7 +1550,6 @@
     current = (idx + slides.length) % slides.length;
     slides[current].classList.add('concept-slide-active');
     dots[current].classList.add('concept-dot-active');
-    label.textContent = labels[current];
   }
 
   btn.addEventListener('click', () => { goTo(0); modal.classList.add('active'); });

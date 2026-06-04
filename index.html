@@ -853,29 +853,9 @@
     }
 
     /* ── BOUTONS VERS LES PLANS DE COUPES ──────────────────────────────── */
-    .concept-trigger-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      font: inherit;
-      color: inherit;
-      letter-spacing: inherit;
-      text-transform: inherit;
-    }
-    .concept-trigger-btn--inline {
-      display: inline;
-      border-bottom: 1px dashed var(--gold-dim);
-      transition: color .2s, border-bottom-color .2s;
-    }
-    .concept-trigger-btn--inline:hover,
-    .concept-trigger-btn--inline:focus-visible {
-      color: var(--gold-light);
-      border-bottom-color: var(--gold);
-      outline: none;
-    }
     button.hero-eyebrow {
       display: inline-block;
+      border: 1px solid var(--gold-dim);
       transition: border-color .2s, color .2s;
     }
     button.hero-eyebrow:hover {
@@ -892,7 +872,7 @@
     <span></span><span></span><span></span>
   </div>
   <div class="hero-content">
-    <button class="hero-eyebrow concept-trigger-btn" data-slide="1">Atelier de création acoustique</button>
+    <button class="hero-eyebrow" data-slide="1">Atelier de création acoustique</button>
     <h1>Aéro<span>Calme</span></h1>
     <p class="hero-baseline">Sculptures acoustiques suspendues</p>
     <div class="hero-line"></div>
@@ -984,7 +964,7 @@
     <div class="section-argument-cards">
       <div class="section-argument-card">
         <span class="card-icon">🪟</span>
-        <span class="card-text"><button class="concept-trigger-btn concept-trigger-btn--inline" data-slide="1">Façades vitrées intouchables</button></span>
+        <span class="card-text"><button class="btn-cta" data-slide="1">Façades vitrées intouchables</button></span>
       </div>
       <div class="section-argument-card">
         <span class="card-icon">📐</span>
@@ -992,7 +972,7 @@
       </div>
       <div class="section-argument-card">
         <span class="card-icon">🏛</span>
-        <span class="card-text"><button class="concept-trigger-btn concept-trigger-btn--inline" data-slide="1">Architecture protégée classée</button></span>
+        <span class="card-text"><button class="btn-cta" data-slide="1">Architecture protégée classée</button></span>
       </div>
     </div>
   </div>
@@ -1055,7 +1035,7 @@
 
           <!-- Hauteur -->
           <div class="field">
-            <label><button class="concept-trigger-btn concept-trigger-btn--inline" data-slide="1">Hauteur sous plafond</button> (m)</label>
+            <label><button class="btn-cta" data-slide="1">Hauteur sous plafond</button> (m)</label>
             <input type="number" id="hauteur" placeholder="ex. 6.5" min="1" step="0.1" />
           </div>
 
@@ -1540,7 +1520,7 @@
 
   btn.addEventListener('click', () => { goTo(0); modal.classList.add('active'); });
 
-  document.querySelectorAll('.concept-trigger-btn[data-slide]').forEach(trigger => {
+  document.querySelectorAll('[data-slide]').forEach(trigger => {
     trigger.addEventListener('click', e => {
       e.stopPropagation();
       goTo(parseInt(trigger.dataset.slide, 10));

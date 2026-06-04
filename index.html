@@ -96,7 +96,8 @@
       letter-spacing: -.02em;
       line-height: 1;
       color: #fff;
-      margin-bottom: 1.5rem;
+    
+      
     }
     .hero h1 span { color: var(--gold); font-weight: 300; }
 
@@ -748,54 +749,6 @@
       max-width: 100%;
       height: auto;
     }
-    .concept-modal-inner {
-      width: min(95vw, 1100px) !important;
-      max-height: 88vh !important;
-      overflow: hidden !important;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .concept-img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #08070a;
-    }
-
-    .concept-expand-btn {
-      position: absolute;
-      top: .6rem;
-      right: .6rem;
-      width: 28px;
-      height: 28px;
-      background: rgba(0,0,0,.6);
-      border: 1px solid var(--gold-dim);
-      color: var(--gold);
-      font-size: .75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 5;
-      transition: background .2s, border-color .2s;
-      border-radius: 2px;
-    }
-    .concept-expand-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
-    .concept-slide { position: relative; }
-
-    .concept-zoom-hint {
-      background: #08070a;
-      text-align: center;
-      font-size: .65rem;
-      color: var(--text-muted);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .5rem;
-      border-top: 1px solid #16161e;
-    }
-
     .concept-modal-close {
       position: absolute;
       top: 1rem;
@@ -811,9 +764,9 @@
     }
     .concept-modal-close:hover { color: #fff; }
 
-    .concept-slides-wrap { overflow: hidden; flex: 1; min-height: 0; }
-    .concept-slide { display: none; height: 100%; }
-    .concept-slide-active { display: flex; align-items: center; justify-content: center; }
+    .concept-slides-wrap { overflow: hidden; }
+    .concept-slide { display: none; }
+    .concept-slide-active { display: block; }
 
     .concept-svg-title {
       background: #08070a;
@@ -898,6 +851,37 @@
       .carousel-slide { flex: 0 0 100%; width: 100%; height: 56vw; min-height: 200px; }
       .carousel-arrow, .lightbox-arrow { width: 38px; height: 38px; font-size: 1.4rem; }
     }
+
+    /* ── BOUTONS VERS LES PLANS DE COUPES ──────────────────────────────── */
+    .concept-trigger-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+    }
+    .concept-trigger-btn--inline {
+      display: inline;
+      border-bottom: 1px dashed var(--gold-dim);
+      transition: color .2s, border-bottom-color .2s;
+    }
+    .concept-trigger-btn--inline:hover,
+    .concept-trigger-btn--inline:focus-visible {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold);
+      outline: none;
+    }
+    button.hero-eyebrow {
+      display: inline-block;
+      transition: border-color .2s, color .2s;
+    }
+    button.hero-eyebrow:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
   </style>
 </head>
 <body>
@@ -908,7 +892,7 @@
     <span></span><span></span><span></span>
   </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Atelier de création acoustique</div>
+    <button class="hero-eyebrow concept-trigger-btn" data-slide="1">Atelier de création acoustique</button>
     <h1>Aéro<span>Calme</span></h1>
     <p class="hero-baseline">Sculptures acoustiques suspendues</p>
     <div class="hero-line"></div>
@@ -926,23 +910,17 @@
   <button class="concept-nav-btn concept-nav-next" id="concept-next" aria-label="Suivant">&#8250;</button>
   <div class="concept-modal-inner">
     <button class="concept-modal-close" id="concept-modal-close" aria-label="Fermer">&times;</button>
+    <div class="concept-label" id="concept-label">Licorne Acoustique</div>
     <div class="concept-slides-wrap">
       <div class="concept-slide concept-slide-active">
-        <button class="concept-expand-btn" aria-label="Plein écran">&#x26F6;</button>
-        <img src="./helmholtz.svg" alt="Principe Helmholtz AeroCalme" class="concept-img">
-      </div><!-- /concept-slide 0 -->
-      <div class="concept-slide">
-        <button class="concept-expand-btn" aria-label="Plein écran">&#x26F6;</button>
-        <img src="./soleil.svg" alt="Coupe sphere Soleil AeroCalme" class="concept-img">
+        <img src="./soleil.svg" alt="Coupe anatomique Soleil Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
       </div><!-- /concept-slide 1 -->
       <div class="concept-slide">
-        <button class="concept-expand-btn" aria-label="Plein écran">&#x26F6;</button>
-        <img src="./licorne.svg" alt="Coupe Licorne AeroCalme" class="concept-img">
+        <img src="./licorne.svg" alt="Coupe anatomique Licorne Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
       </div><!-- /concept-slide 2 -->
     </div><!-- /concept-slides-wrap -->
     <div class="concept-dots-bar">
       <span class="concept-dot-btn concept-dot-active"></span>
-      <span class="concept-dot-btn"></span>
       <span class="concept-dot-btn"></span>
     </div>
   </div>
@@ -1006,7 +984,7 @@
     <div class="section-argument-cards">
       <div class="section-argument-card">
         <span class="card-icon">🪟</span>
-        <span class="card-text">Façades vitrées intouchables</span>
+        <span class="card-text"><button class="concept-trigger-btn concept-trigger-btn--inline" data-slide="1">Façades vitrées intouchables</button></span>
       </div>
       <div class="section-argument-card">
         <span class="card-icon">📐</span>
@@ -1014,7 +992,7 @@
       </div>
       <div class="section-argument-card">
         <span class="card-icon">🏛</span>
-        <span class="card-text">Architecture protégée classée</span>
+        <span class="card-text"><button class="concept-trigger-btn concept-trigger-btn--inline" data-slide="1">Architecture protégée classée</button></span>
       </div>
     </div>
   </div>
@@ -1077,7 +1055,7 @@
 
           <!-- Hauteur -->
           <div class="field">
-            <label>Hauteur sous plafond (m)</label>
+            <label><button class="concept-trigger-btn concept-trigger-btn--inline" data-slide="1">Hauteur sous plafond</button> (m)</label>
             <input type="number" id="hauteur" placeholder="ex. 6.5" min="1" step="0.1" />
           </div>
 
@@ -1545,8 +1523,10 @@
   const close  = document.getElementById('concept-modal-close');
   const prev   = document.getElementById('concept-prev');
   const next   = document.getElementById('concept-next');
+  const label  = document.getElementById('concept-label');
   const slides = Array.from(document.querySelectorAll('.concept-slide'));
   const dots   = Array.from(document.querySelectorAll('.concept-dot-btn'));
+  const labels = ['Soleil Acoustique', 'Licorne Acoustique'];
   let current = 0;
 
   function goTo(idx) {
@@ -1555,20 +1535,16 @@
     current = (idx + slides.length) % slides.length;
     slides[current].classList.add('concept-slide-active');
     dots[current].classList.add('concept-dot-active');
+    label.textContent = labels[current];
   }
 
   btn.addEventListener('click', () => { goTo(0); modal.classList.add('active'); });
 
-  /* Bouton carré → lightbox plein écran */
-  document.querySelectorAll('.concept-expand-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
+  document.querySelectorAll('.concept-trigger-btn[data-slide]').forEach(trigger => {
+    trigger.addEventListener('click', e => {
       e.stopPropagation();
-      const img   = btn.nextElementSibling;
-      const lb    = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightbox-img');
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      lb.classList.add('active');
+      goTo(parseInt(trigger.dataset.slide, 10));
+      modal.classList.add('active');
     });
   });
   close.addEventListener('click', () => modal.classList.remove('active'));

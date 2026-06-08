@@ -916,17 +916,21 @@
   <button class="concept-nav-btn concept-nav-next" id="concept-next" aria-label="Suivant">&#8250;</button>
   <div class="concept-modal-inner">
     <button class="concept-modal-close" id="concept-modal-close" aria-label="Fermer">&times;</button>
-    <div class="concept-label" id="concept-label">Licorne Acoustique</div>
+    <div class="concept-label" id="concept-label">Helmholtz</div>
     <div class="concept-slides-wrap">
       <div class="concept-slide concept-slide-active">
-        <img src="./soleil.svg" alt="Coupe anatomique Soleil Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
+        <img src="./helmholtz.svg" data-src-fr="./helmholtz.svg" data-src-en="./helmholtz-en.svg" alt="Principe Helmholtz AeroCalme" style="display:block; max-width:100%; background:#08070a;">
+      </div><!-- /concept-slide 0 -->
+      <div class="concept-slide">
+        <img src="./soleil.svg" data-src-fr="./soleil.svg" data-src-en="./soleil-en.svg" alt="Coupe Soleil Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
       </div><!-- /concept-slide 1 -->
       <div class="concept-slide">
-        <img src="./licorne.svg" alt="Coupe anatomique Licorne Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
+        <img src="./licorne.svg" data-src-fr="./licorne.svg" data-src-en="./licorne-en.svg" alt="Coupe Licorne Acoustique AeroCalme" style="display:block; max-width:100%; background:#08070a;">
       </div><!-- /concept-slide 2 -->
     </div><!-- /concept-slides-wrap -->
     <div class="concept-dots-bar">
       <span class="concept-dot-btn concept-dot-active"></span>
+      <span class="concept-dot-btn"></span>
       <span class="concept-dot-btn"></span>
     </div>
   </div>
@@ -1533,8 +1537,8 @@
   const slides = Array.from(document.querySelectorAll('.concept-slide'));
   const dots   = Array.from(document.querySelectorAll('.concept-dot-btn'));
   const labels = {
-    fr: ['Soleil Acoustique', 'Licorne Acoustique'],
-    en: ['Acoustic Sun', 'Acoustic Unicorn']
+    fr: ['Helmholtz', 'Soleil Acoustique', 'Licorne Acoustique'],
+    en: ['Helmholtz', 'Acoustic Sun', 'Acoustic Unicorn']
   };
   let current = 0;
 
@@ -1624,12 +1628,17 @@
       sel.selectedIndex = idx;
     });
 
+    /* Swap concept modal SVG sources */
+    document.querySelectorAll('[data-src-en]').forEach(img => {
+      img.src = lang === 'en' ? img.dataset.srcEn : img.dataset.srcFr;
+    });
+
     /* Update concept-label if modal is open */
     const labelEl = document.getElementById('concept-label');
     const activeSlide = document.querySelector('.concept-slide-active');
     if (labelEl && activeSlide) {
       const slideIdx = Array.from(document.querySelectorAll('.concept-slide')).indexOf(activeSlide);
-      const conceptLabels = { fr: ['Soleil Acoustique', 'Licorne Acoustique'], en: ['Acoustic Sun', 'Acoustic Unicorn'] };
+      const conceptLabels = { fr: ['Helmholtz', 'Soleil Acoustique', 'Licorne Acoustique'], en: ['Helmholtz', 'Acoustic Sun', 'Acoustic Unicorn'] };
       if (slideIdx >= 0) labelEl.textContent = conceptLabels[lang][slideIdx];
     }
   }

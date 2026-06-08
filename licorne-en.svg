@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" style="background:#08070a">
+<style>
+text { font-family: Arial, sans-serif; letter-spacing: 0; }
+</style>
+<!-- Main body - PET felt -->
+<ellipse cx="360" cy="370" rx="200" ry="145" fill="#4a3c2c"/>
+<ellipse cx="530" cy="305" rx="88" ry="72" fill="#4a3c2c"/>
+<path d="M452 318 Q482 358 460 382 L418 377 Q425 348 442 323Z" fill="#4a3c2c"/>
+<path d="M164 368 Q118 320 128 268 Q138 216 124 186 Q110 156 132 149" fill="none" stroke="#4a3c2c" stroke-width="24" stroke-linecap="round"/>
+<!-- Melamine foam -->
+<ellipse cx="360" cy="370" rx="182" ry="128" fill="#7a9a6a"/>
+<ellipse cx="530" cy="307" rx="70" ry="57" fill="#7a9a6a"/>
+<path d="M454 324 Q478 356 460 379 L422 374 Q430 350 445 328Z" fill="#7a9a6a"/>
+<path d="M164 368 Q118 320 128 268 Q138 216 124 186 Q110 156 132 149" fill="none" stroke="#7a9a6a" stroke-width="14" stroke-linecap="round"/>
+<!-- PE cavity -->
+<ellipse cx="360" cy="370" rx="118" ry="86" fill="#2a3a4a"/>
+<ellipse cx="530" cy="308" rx="45" ry="38" fill="#2a3a4a"/>
+<!-- Helmholtz channels -->
+<g fill="#90b8e0" stroke="#3a5878" stroke-width="0.8" opacity="0.9">
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(0,360,370)"/>
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(45,360,370)"/>
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(90,360,370)"/>
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(135,360,370)"/>
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(180,360,370)"/>
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(225,360,370)"/>
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(270,360,370)"/>
+  <rect x="349" y="285" width="22" height="85" rx="4" transform="rotate(315,360,370)"/>
+</g>
+<g fill="#90b8e0" stroke="#3a5878" stroke-width="0.8">
+  <rect x="523" y="272" width="14" height="36" rx="3"/>
+  <rect x="502" y="285" width="36" height="14" rx="3"/>
+  <rect x="498" y="274" width="14" height="36" rx="3" transform="rotate(-35,505,292)"/>
+  <rect x="548" y="274" width="14" height="36" rx="3" transform="rotate(35,555,292)"/>
+</g>
+<!-- Central air cavity -->
+<ellipse cx="360" cy="370" rx="60" ry="44" fill="#5888b0"/>
+<ellipse cx="530" cy="309" rx="26" ry="22" fill="#5888b0"/>
+<!-- Borosilicate horn -->
+<polygon points="548,248 562,118 576,248" fill="rgba(200,230,255,0.18)" stroke="rgba(180,220,255,0.7)" stroke-width="2"/>
+<polygon points="554,246 562,128 570,246" fill="rgba(160,200,240,0.12)" stroke="rgba(140,180,220,0.4)" stroke-width="1"/>
+<polygon points="558,244 562,135 566,244" fill="#3a6888"/>
+<line x1="552" y1="200" x2="554" y2="130" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+<line x1="572" y1="200" x2="570" y2="135" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<ellipse cx="562" cy="118" rx="18" ry="6" fill="rgba(200,230,255,0.3)" stroke="rgba(180,220,255,0.6)" stroke-width="1.5"/>
+<ellipse cx="562" cy="246" rx="14" ry="5" fill="none" stroke="#C8951A" stroke-width="2.5"/>
+<ellipse cx="562" cy="246" rx="10" ry="3.5" fill="#C8951A" opacity="0.4"/>
+<!-- Bamboo legs -->
+<rect x="228" y="500" width="32" height="95" rx="10" fill="#6a5a30"/>
+<rect x="232" y="504" width="8" height="87" rx="3" fill="#8a7840" opacity="0.5"/>
+<line x1="228" y1="540" x2="260" y2="540" stroke="#4a3a18" stroke-width="1.5"/>
+<line x1="228" y1="568" x2="260" y2="568" stroke="#4a3a18" stroke-width="1.5"/>
+<rect x="240" y="502" width="16" height="91" rx="5" fill="#3a6080"/>
+<rect x="224" y="588" width="40" height="18" rx="5" fill="#b8922a"/>
+<rect x="226" y="590" width="36" height="14" rx="4" fill="#d4aa3a"/>
+<line x1="230" y1="594" x2="258" y2="594" stroke="#8a6810" stroke-width="0.8"/>
+<line x1="230" y1="598" x2="258" y2="598" stroke="#8a6810" stroke-width="0.8"/>
+<line x1="230" y1="602" x2="258" y2="602" stroke="#8a6810" stroke-width="0.8"/>
+<line x1="237" y1="590" x2="237" y2="606" stroke="#8a6810" stroke-width="0.8"/>
+<line x1="244" y1="590" x2="244" y2="606" stroke="#8a6810" stroke-width="0.8"/>
+<line x1="251" y1="590" x2="251" y2="606" stroke="#8a6810" stroke-width="0.8"/>
+<rect x="296" y="503" width="32" height="92" rx="10" fill="#6a5a30"/>
+<rect x="300" y="507" width="8" height="84" rx="3" fill="#8a7840" opacity="0.5"/>
+<line x1="296" y1="542" x2="328" y2="542" stroke="#4a3a18" stroke-width="1.5"/>
+<line x1="296" y1="570" x2="328" y2="570" stroke="#4a3a18" stroke-width="1.5"/>
+<rect x="308" y="505" width="16" height="88" rx="5" fill="#3a6080"/>
+<rect x="292" y="588" width="40" height="18" rx="5" fill="#b8922a"/>
+<rect x="294" y="590" width="36" height="14" rx="4" fill="#d4aa3a"/>
+<rect x="402" y="500" width="32" height="95" rx="10" fill="#6a5a30"/>
+<line x1="402" y1="538" x2="434" y2="538" stroke="#4a3a18" stroke-width="1.5"/>
+<line x1="402" y1="566" x2="434" y2="566" stroke="#4a3a18" stroke-width="1.5"/>
+<rect x="414" y="502" width="16" height="91" rx="5" fill="#3a6080"/>
+<rect x="398" y="588" width="40" height="18" rx="5" fill="#b8922a"/>
+<rect x="400" y="590" width="36" height="14" rx="4" fill="#d4aa3a"/>
+<rect x="468" y="503" width="32" height="92" rx="10" fill="#6a5a30"/>
+<line x1="468" y1="542" x2="500" y2="542" stroke="#4a3a18" stroke-width="1.5"/>
+<line x1="468" y1="570" x2="500" y2="570" stroke="#4a3a18" stroke-width="1.5"/>
+<rect x="480" y="505" width="16" height="88" rx="5" fill="#3a6080"/>
+<rect x="464" y="588" width="40" height="18" rx="5" fill="#b8922a"/>
+<rect x="466" y="590" width="36" height="14" rx="4" fill="#d4aa3a"/>
+<!-- Suspension cables -->
+<line x1="305" y1="228" x2="305" y2="168" stroke="#a0b8c8" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="415" y1="228" x2="415" y2="168" stroke="#a0b8c8" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="305" y1="170" x2="415" y2="170" stroke="#a0b8c8" stroke-width="1.8"/>
+<line x1="360" y1="170" x2="360" y2="150" stroke="#a0b8c8" stroke-width="2.2"/>
+<ellipse cx="360" cy="147" rx="18" ry="7" fill="#5a7080"/>
+<text x="384" y="144" font-size="8.5" fill="#7a9aaa">3mm stainless steel cable rosette</text>
+<!-- Waves -->
+<path d="M50 395 Q72 380 50 365" fill="none" stroke="#C8951A" stroke-width="1.5" opacity="0.9"/>
+<path d="M38 403 Q65 386 38 369" fill="none" stroke="#C8951A" stroke-width="1.2" opacity="0.6"/>
+<path d="M26 411 Q58 392 26 373" fill="none" stroke="#C8951A" stroke-width="1" opacity="0.35"/>
+<text x="42" y="435" text-anchor="middle" font-size="8" fill="#C8951A">bass waves</text>
+<text x="42" y="446" text-anchor="middle" font-size="8" fill="#C8951A">40-200 Hz</text>
+<defs>
+  <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M1 1L9 5L1 9" fill="none" stroke="#C8951A" stroke-width="1.5" stroke-linecap="round"/>
+  </marker>
+</defs>
+<line x1="62" y1="390" x2="72" y2="390" stroke="#C8951A" stroke-width="1.5" marker-end="url(#arrg)"/>
+<!-- Legend -->
+<text x="48" y="82" font-size="9" fill="#C8951A">MATERIALS</text>
+<rect x="48" y="90" width="16" height="11" rx="2" fill="#4a3c2c"/><text x="70" y="100" font-size="9" fill="#c0bcb0">Acoustic PET felt 20mm</text>
+<rect x="48" y="107" width="16" height="11" rx="2" fill="#7a9a6a"/><text x="70" y="117" font-size="9" fill="#c0bcb0">Melamine foam Basotect 64mm</text>
+<rect x="48" y="124" width="16" height="11" rx="2" fill="#2a3a4a"/><text x="70" y="134" font-size="9" fill="#c0bcb0">Rotomoulded PE shell cavity 16L</text>
+<rect x="48" y="141" width="16" height="11" rx="2" fill="#90b8e0"/><text x="70" y="151" font-size="9" fill="#c0bcb0">Rigid PVC tubes 55mm x8 body</text>
+<rect x="48" y="158" width="16" height="11" rx="2" fill="#5888b0"/><text x="70" y="168" font-size="9" fill="#c0bcb0">Central air cavity 16 litres</text>
+<rect x="48" y="175" width="16" height="11" rx="2" fill="rgba(200,230,255,0.4)" stroke="rgba(180,220,255,0.6)" stroke-width="1"/><text x="70" y="185" font-size="9" fill="#c0bcb0">Borosilicate horn 100mm L=1200mm</text>
+<rect x="48" y="192" width="16" height="11" rx="2" fill="#3a6080"/><text x="70" y="202" font-size="9" fill="#c0bcb0">Axial channel 80mm trap 60-90 Hz</text>
+<rect x="48" y="209" width="16" height="11" rx="2" fill="#6a5a30"/><text x="70" y="219" font-size="9" fill="#c0bcb0">Bamboo legs internal tube 70mm</text>
+<rect x="48" y="226" width="16" height="11" rx="2" fill="#d4aa3a"/><text x="70" y="236" font-size="9" fill="#c0bcb0">Brass shoe micro-perforated grille</text>
+<rect x="48" y="243" width="16" height="11" rx="2" fill="#C8951A"/><text x="70" y="253" font-size="9" fill="#c0bcb0">LED ring horn base</text>
+<!-- Annotations -->
+<line x1="162" y1="395" x2="90" y2="395" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="4,3"/>
+<text x="86" y="392" text-anchor="end" font-size="8.5" fill="#C8951A">Body</text>
+<text x="86" y="402" text-anchor="end" font-size="8" fill="#6a5848">L 2.2m</text>
+<line x1="600" y1="148" x2="660" y2="148" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="4,3"/>
+<line x1="600" y1="606" x2="660" y2="606" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="4,3"/>
+<line x1="658" y1="148" x2="658" y2="606" stroke="#C8951A" stroke-width="0.8"/>
+<text x="664" y="382" font-size="8.5" fill="#C8951A">Total H</text>
+<text x="664" y="393" font-size="8.5" fill="#C8951A">4.5m</text>
+<line x1="578" y1="178" x2="640" y2="155" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="4,3"/>
+<text x="642" y="153" font-size="8.5" fill="#c8d8f0">Borosilicate horn</text>
+<text x="642" y="164" font-size="8" fill="#6a6858">100mm L=1200mm</text>
+<text x="642" y="175" font-size="8" fill="#6a6858">Open axial channel 65 Hz</text>
+<text x="642" y="186" font-size="8" fill="#C8951A">LED ring at base</text>
+<line x1="244" y1="606" x2="200" y2="640" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="4,3"/>
+<text x="196" y="638" text-anchor="end" font-size="8.5" fill="#d4aa3a">Brass shoe</text>
+<text x="196" y="649" text-anchor="end" font-size="8" fill="#6a5848">micro-perforated grille</text>
+<text x="196" y="660" text-anchor="end" font-size="8" fill="#6a5848">bass wave entry</text>
+<line x1="260" y1="548" x2="200" y2="548" stroke="#C8951A" stroke-width="0.6" stroke-dasharray="4,3"/>
+<text x="196" y="546" text-anchor="end" font-size="8.5" fill="#8a7a40">Treated bamboo</text>
+<text x="196" y="557" text-anchor="end" font-size="8" fill="#6a5848">int. tube 70mm</text>
+<text x="196" y="568" text-anchor="end" font-size="8" fill="#6a5848">L=900mm 95 Hz</text>
+<!-- Helmholtz circuit -->
+<rect x="690" y="80" width="280" height="340" rx="6" fill="#0c0a08" stroke="#2a2418" stroke-width="0.8"/>
+<text x="830" y="102" text-anchor="middle" font-size="9" fill="#C8951A">HELMHOLTZ CIRCUIT</text>
+<text x="830" y="114" text-anchor="middle" font-size="8" fill="#4a4030">Electro-acoustic analogy</text>
+<circle cx="720" cy="220" r="18" fill="none" stroke="#C8951A" stroke-width="1.5"/>
+<text x="720" y="215" text-anchor="middle" font-size="9" fill="#C8951A">~P</text>
+<text x="720" y="226" text-anchor="middle" font-size="7" fill="#6a5848">pressure</text>
+<line x1="720" y1="202" x2="720" y2="170" stroke="#e8e4d8" stroke-width="1.2"/>
+<line x1="720" y1="170" x2="940" y2="170" stroke="#e8e4d8" stroke-width="1.2"/>
+<line x1="720" y1="238" x2="720" y2="270" stroke="#e8e4d8" stroke-width="1.2"/>
+<line x1="720" y1="270" x2="940" y2="270" stroke="#e8e4d8" stroke-width="1.2"/>
+<line x1="940" y1="170" x2="940" y2="270" stroke="#e8e4d8" stroke-width="1.2"/>
+<text x="795" y="162" text-anchor="middle" font-size="8" fill="#90b8e0">L = neck air mass</text>
+<rect x="760" y="164" width="70" height="12" rx="2" fill="none" stroke="#90b8e0" stroke-width="1"/>
+<path d="M762 170 Q767 163 772 170 Q777 177 782 170 Q787 163 792 170 Q797 177 802 170 Q807 163 812 170 Q817 177 822 170 Q827 163 828 170" fill="none" stroke="#90b8e0" stroke-width="1.5"/>
+<text x="870" y="162" text-anchor="middle" font-size="8" fill="#e88080">R = friction</text>
+<rect x="850" y="164" width="40" height="12" rx="2" fill="none" stroke="#e88080" stroke-width="1"/>
+<path d="M852 170 L856 164 L860 176 L864 164 L868 176 L872 164 L876 176 L880 170 L884 170" fill="none" stroke="#e88080" stroke-width="1.5"/>
+<text x="870" y="200" text-anchor="middle" font-size="7.5" fill="#e88080">heat = absorption</text>
+<line x1="940" y1="170" x2="940" y2="210" stroke="#e8e4d8" stroke-width="1.2"/>
+<line x1="940" y1="230" x2="940" y2="270" stroke="#e8e4d8" stroke-width="1.2"/>
+<line x1="920" y1="210" x2="960" y2="210" stroke="#5888b0" stroke-width="3"/>
+<line x1="920" y1="230" x2="960" y2="230" stroke="#5888b0" stroke-width="3"/>
+<text x="968" y="222" font-size="8" fill="#5888b0">C</text>
+<text x="968" y="233" font-size="7" fill="#5888b0">cavity</text>
+<text x="700" y="298" font-size="8.5" fill="#e8e4d8">f0 = 1/(2pi*sqrt(LC)) acoustic:</text>
+<text x="700" y="312" font-size="8.5" fill="#C8951A">f0 = c/2pi * sqrt(A / V*L_col)</text>
+<line x1="700" y1="320" x2="960" y2="320" stroke="#2a2418" stroke-width="0.5"/>
+<text x="700" y="334" font-size="8" fill="#6a5848">TARGET FREQUENCIES LICORNE 6m</text>
+<text x="700" y="348" font-size="8.5" fill="#90b8e0">Body x8 tubes 55mm L450mm</text>
+<text x="940" y="348" text-anchor="end" font-size="8.5" fill="#C8951A">80-150 Hz</text>
+<text x="700" y="362" font-size="8.5" fill="#6a5a30">Legs x4 bamboo 70mm L900mm</text>
+<text x="940" y="362" text-anchor="end" font-size="8.5" fill="#C8951A">95 Hz</text>
+<text x="700" y="376" font-size="8.5" fill="#c8d8f0">Borosilicate horn 80mm L1200mm</text>
+<text x="940" y="376" text-anchor="end" font-size="8.5" fill="#C8951A">65 Hz</text>
+<text x="700" y="390" font-size="8.5" fill="#7a9a6a">Wave guide tail L800mm</text>
+<text x="940" y="390" text-anchor="end" font-size="8.5" fill="#C8951A">107 Hz</text>
+<line x1="700" y1="397" x2="960" y2="397" stroke="#2a2418" stroke-width="0.5"/>
+<text x="700" y="410" font-size="8.5" fill="#e8e4d8">Total coverage</text>
+<text x="940" y="410" text-anchor="end" font-size="9" fill="#C8951A" font-weight="bold">65 - 200 Hz</text>
+<!-- Shoe detail -->
+<rect x="690" y="440" width="280" height="200" rx="6" fill="#0c0a08" stroke="#2a2418" stroke-width="0.8"/>
+<text x="830" y="460" text-anchor="middle" font-size="9" fill="#C8951A">SHOE DETAIL - WAVE ENTRY</text>
+<rect x="780" y="468" width="100" height="50" rx="4" fill="#6a5a30"/>
+<rect x="798" y="468" width="28" height="50" rx="3" fill="#3a6080"/>
+<text x="730" y="488" font-size="8" fill="#8a7a40">Bamboo</text>
+<text x="730" y="498" font-size="8" fill="#8a7a40">treated</text>
+<text x="815" y="498" text-anchor="middle" font-size="8" fill="#90b8e0">70mm</text>
+<rect x="770" y="518" width="120" height="28" rx="5" fill="#b8922a"/>
+<rect x="774" y="520" width="112" height="24" rx="4" fill="#d4aa3a"/>
+<g fill="#8a6010">
+  <circle cx="786" cy="532" r="2.5"/><circle cx="796" cy="532" r="2.5"/><circle cx="806" cy="532" r="2.5"/>
+  <circle cx="816" cy="532" r="2.5"/><circle cx="826" cy="532" r="2.5"/><circle cx="836" cy="532" r="2.5"/>
+  <circle cx="846" cy="532" r="2.5"/><circle cx="856" cy="532" r="2.5"/><circle cx="866" cy="532" r="2.5"/>
+  <circle cx="876" cy="532" r="2.5"/>
+</g>
+<path d="M770 546 Q730 558 718 575 L942 575 Q930 558 890 546Z" fill="#c8a030" opacity="0.7"/>
+<path d="M770 546 Q730 558 718 575" fill="none" stroke="#d4aa3a" stroke-width="1.5"/>
+<path d="M890 546 Q930 558 942 575" fill="none" stroke="#d4aa3a" stroke-width="1.5"/>
+<line x1="830" y1="612" x2="830" y2="578" stroke="#C8951A" stroke-width="2" marker-end="url(#arrg)"/>
+<text x="830" y="624" text-anchor="middle" font-size="8" fill="#C8951A">bass wave</text>
+<text x="716" y="565" font-size="8" fill="#d4aa3a">Flared bell</text>
+<text x="716" y="575" font-size="8" fill="#6a5848">maximum capture</text>
+<!-- Disclaimer -->
+<text x="500" y="692" text-anchor="middle" font-size="8" fill="#2a2018">Indicative non-contractual diagram - AeroCalme 2026</text>
+</svg>

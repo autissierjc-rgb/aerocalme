@@ -862,9 +862,35 @@
       border-color: var(--gold);
       color: var(--gold-light);
     }
+
+    /* ── LANG TOGGLE ─────────────────────────────────────────────────── */
+    #lang-btn {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      z-index: 1000;
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: .4rem .9rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    #lang-btn:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
   </style>
 </head>
 <body>
+
+<button id="lang-btn" aria-label="Switch language">EN</button>
 
 <!-- ═══════════════════════════ HERO ════════════════════════════════════ -->
 <section class="hero">
@@ -872,15 +898,15 @@
     <span></span><span></span><span></span>
   </div>
   <div class="hero-content">
-    <button class="hero-eyebrow" data-slide="1">Atelier de création acoustique</button>
+    <button class="hero-eyebrow" data-slide="1" data-en="Acoustic Design Studio">Atelier de création acoustique</button>
     <h1>Aéro<span>Calme</span></h1>
-    <p class="hero-baseline">Sculptures acoustiques suspendues</p>
+    <p class="hero-baseline" data-en="Suspended acoustic sculptures">Sculptures acoustiques suspendues</p>
     <div class="hero-line"></div>
-    <p class="hero-desc">
+    <p class="hero-desc" data-en="We design monumental suspended installations — planets, clouds, halos, waves — that transform acoustics and the perception of large spaces.">
       Nous concevons des installations monumentales suspendues — planètes, nuages, halos, vagues —
       qui transforment l'acoustique et la perception des grands volumes.
     </p>
-    <button class="btn-cta" id="btn-voir-concept">Comprendre le concept</button>
+    <button class="btn-cta" id="btn-voir-concept" data-en="Understand the concept">Comprendre le concept</button>
   </div>
 </section>
 
@@ -953,26 +979,26 @@
 <!-- ═══════════════════════════ SECTION ARGUMENT ════════════════════════ -->
 <section class="section-argument">
   <div class="section-argument-inner">
-    <div class="section-label">Acoustique &amp; Architecture</div>
-    <h2 class="section-argument-title">
+    <div class="section-label" data-en="Acoustics &amp; Architecture">Acoustique &amp; Architecture</div>
+    <h2 class="section-argument-title" data-en-html="Your acoustician says a <em>glass facade</em> is an unsolvable problem.">
       Votre acousticien dit qu'une <em>façade vitrée</em> est un problème insoluble.
     </h2>
     <div class="divider"></div>
-    <p class="section-argument-sub">
+    <p class="section-argument-sub" data-en="AéroCalme is the only solution that doesn't touch your architecture.">
       AéroCalme est la seule solution qui ne touche pas à votre architecture.
     </p>
     <div class="section-argument-cards">
       <div class="section-argument-card">
         <span class="card-icon">🪟</span>
-        <span class="card-text"><button class="btn-cta" data-slide="1">Façades vitrées intouchables</button></span>
+        <span class="card-text"><button class="btn-cta" data-slide="1" data-en="Untouchable glass facades">Façades vitrées intouchables</button></span>
       </div>
       <div class="section-argument-card">
         <span class="card-icon">📐</span>
-        <span class="card-text">Hauteurs inaccessibles</span>
+        <span class="card-text" data-en="Inaccessible heights">Hauteurs inaccessibles</span>
       </div>
       <div class="section-argument-card">
         <span class="card-icon">🏛</span>
-        <span class="card-text"><button class="btn-cta" data-slide="1">Architecture protégée classée</button></span>
+        <span class="card-text"><button class="btn-cta" data-slide="1" data-en="Listed protected architecture">Architecture protégée classée</button></span>
       </div>
     </div>
   </div>
@@ -981,10 +1007,10 @@
 <!-- ═══════════════════════════ FORMULAIRE ══════════════════════════════ -->
 <div id="prevision">
   <div class="section">
-    <div class="section-label">Pré-vision de projet</div>
-    <h2 class="section-title">Décrivez votre espace</h2>
+    <div class="section-label" data-en="Project pre-vision">Pré-vision de projet</div>
+    <h2 class="section-title" data-en="Describe your space">Décrivez votre espace</h2>
     <div class="divider"></div>
-    <p class="section-sub">
+    <p class="section-sub" data-en="Our assistant analyses your venue's characteristics and generates a bespoke acoustic concept pre-vision, non-contractual.">
       Notre assistant analyse les caractéristiques de votre lieu et génère une pré-vision
       de concept acoustique sur mesure, non contractuelle.
     </p>
@@ -997,11 +1023,11 @@
 
           <!-- Photo upload -->
           <div class="field full">
-            <label>Photo du lieu (optionnel)</label>
+            <label data-en="Photo of the venue (optional)">Photo du lieu (optionnel)</label>
             <div class="file-upload-area" id="drop-zone">
               <input type="file" id="photo-input" accept="image/*" />
               <span class="upload-icon">◎</span>
-              <div class="upload-text">
+              <div class="upload-text" data-en-html="<strong>Drop a photo</strong> or click to browse<br>JPG, PNG, WebP — max 4 MB">
                 <strong>Déposez une photo</strong> ou cliquez pour parcourir<br>
                 JPG, PNG, WebP — max 4 Mo
               </div>
@@ -1011,7 +1037,7 @@
 
           <!-- Type de lieu -->
           <div class="field">
-            <label>Type de lieu</label>
+            <label data-en="Venue type">Type de lieu</label>
             <select id="lieu-type">
               <option value="">— Sélectionnez —</option>
               <option>Restaurant / Brasserie</option>
@@ -1029,19 +1055,19 @@
 
           <!-- Surface -->
           <div class="field">
-            <label>Surface au sol (m²)</label>
+            <label data-en="Floor area (m²)">Surface au sol (m²)</label>
             <input type="number" id="surface" placeholder="ex. 350" min="1" />
           </div>
 
           <!-- Hauteur -->
           <div class="field">
-            <label><button class="btn-cta" data-slide="1">Hauteur sous plafond</button> (m)</label>
+            <label><button class="btn-cta" data-slide="1" data-en="Ceiling height">Hauteur sous plafond</button> (m)</label>
             <input type="number" id="hauteur" placeholder="ex. 6.5" min="1" step="0.1" />
           </div>
 
           <!-- Style -->
           <div class="field">
-            <label>Style esthétique souhaité</label>
+            <label data-en="Desired aesthetic style">Style esthétique souhaité</label>
             <select id="style">
               <option value="">— Sélectionnez —</option>
               <option>Minimaliste contemporain</option>
@@ -1057,13 +1083,13 @@
 
           <!-- Problème acoustique -->
           <div class="field full">
-            <label>Problème acoustique rencontré</label>
-            <textarea id="probleme" placeholder="Décrivez ce que vous vivez : échos, conversations difficiles, bruit ambiant trop élevé, manque de confort sonore…"></textarea>
+            <label data-en="Acoustic problem encountered">Problème acoustique rencontré</label>
+            <textarea id="probleme" placeholder="Décrivez ce que vous vivez : échos, conversations difficiles, bruit ambiant trop élevé, manque de confort sonore…" data-en-placeholder="Describe what you experience: echoes, difficult conversations, excessive ambient noise, lack of sonic comfort…"></textarea>
           </div>
 
           <!-- Budget -->
           <div class="field">
-            <label>Budget approximatif (€)</label>
+            <label data-en="Approximate budget (€)">Budget approximatif (€)</label>
             <select id="budget">
               <option value="">— Sélectionnez —</option>
               <option>Moins de 10 000 €</option>
@@ -1077,8 +1103,8 @@
 
           <!-- Email -->
           <div class="field">
-            <label>Email (pour recevoir la pré-vision)</label>
-            <input type="email" id="email" placeholder="vous@exemple.com" />
+            <label data-en="Email (to receive the pre-vision)">Email (pour recevoir la pré-vision)</label>
+            <input type="email" id="email" placeholder="vous@exemple.com" data-en-placeholder="you@example.com" />
           </div>
 
         </div>
@@ -1087,7 +1113,7 @@
           <p id="form-error-msg"></p>
         </div>
 
-        <button type="submit" class="btn-submit" id="submit-btn">
+        <button type="submit" class="btn-submit" id="submit-btn" data-en="Generate my pre-vision">
           Générer ma pré-vision
         </button>
       </form>
@@ -1098,22 +1124,22 @@
 <!-- ═══════════════════════════ RÉSULTAT ════════════════════════════════ -->
 <section id="result-section">
   <div class="section" style="padding-top: 0;">
-    <div class="section-label">Votre pré-vision</div>
-    <h2 class="section-title">Concept proposé</h2>
+    <div class="section-label" data-en="Your pre-vision">Votre pré-vision</div>
+    <h2 class="section-title" data-en="Proposed concept">Concept proposé</h2>
     <div class="divider"></div>
 
     <div class="result-card">
       <div class="result-header">
         <div class="result-header-icon">◈</div>
         <div>
-          <h3>Pré-vision AéroCalme</h3>
-          <small>Générée par l'assistant de pré-création</small>
+          <h3 data-en="AéroCalme Pre-vision">Pré-vision AéroCalme</h3>
+          <small data-en="Generated by the pre-creation assistant">Générée par l'assistant de pré-création</small>
         </div>
       </div>
       <div class="result-body">
         <div class="loading-state" id="loading">
           <div class="spinner"></div>
-          <p>Analyse du lieu en cours…</p>
+          <p data-en="Analysing your venue…">Analyse du lieu en cours…</p>
         </div>
         <div id="result-content">
           <div class="result-text" id="result-text"></div>
@@ -1126,33 +1152,33 @@
   <!-- DEVIS -->
   <div id="devis-section">
     <div class="devis-inner">
-      <h3>Concrétisons votre projet</h3>
-      <p>
+      <h3 data-en="Let's bring your project to life">Concrétisons votre projet</h3>
+      <p data-en="Interested in this pre-vision? Contact us for an in-depth consultation, site visit and detailed quote.">
         Cette pré-vision vous intéresse ? Contactez-nous pour une consultation approfondie,
         une visite du site et un devis détaillé.
       </p>
-      <button class="btn-devis" id="devis-toggle-btn">Demander un devis</button>
+      <button class="btn-devis" id="devis-toggle-btn" data-en="Request a quote">Demander un devis</button>
 
       <div class="devis-form" id="devis-form">
-        <h4>Prise de contact</h4>
+        <h4 data-en="Get in touch">Prise de contact</h4>
         <div class="form-grid" style="gap:1rem">
           <div class="field">
-            <label>Nom / Société</label>
-            <input type="text" id="devis-nom" placeholder="Votre nom ou entreprise" />
+            <label data-en="Name / Company">Nom / Société</label>
+            <input type="text" id="devis-nom" placeholder="Votre nom ou entreprise" data-en-placeholder="Your name or company" />
           </div>
           <div class="field">
-            <label>Téléphone</label>
+            <label data-en="Phone">Téléphone</label>
             <input type="tel" id="devis-tel" placeholder="+33 6 …" />
           </div>
           <div class="field full">
-            <label>Message complémentaire</label>
-            <textarea id="devis-msg" placeholder="Délai souhaité, contraintes particulières…" style="min-height:80px"></textarea>
+            <label data-en="Additional message">Message complémentaire</label>
+            <textarea id="devis-msg" placeholder="Délai souhaité, contraintes particulières…" data-en-placeholder="Desired timeline, specific constraints…" style="min-height:80px"></textarea>
           </div>
         </div>
-        <button class="btn-submit" id="devis-submit-btn" style="margin-top:1.5rem">
+        <button class="btn-submit" id="devis-submit-btn" style="margin-top:1.5rem" data-en="Send request">
           Envoyer la demande
         </button>
-        <div id="devis-confirm" style="display:none; margin-top:1rem; text-align:center; color:var(--gold); font-size:.9rem; font-weight:300;">
+        <div id="devis-confirm" style="display:none; margin-top:1rem; text-align:center; color:var(--gold); font-size:.9rem; font-weight:300;" data-en="Your request has been sent. We will get back to you within 48 hours.">
           Votre demande a été envoyée. Nous vous recontacterons sous 48 h.
         </div>
       </div>
@@ -1163,7 +1189,7 @@
 <!-- ═══════════════════════════ FOOTER ══════════════════════════════════ -->
 <footer>
   <p class="footer-brand">Aéro<span>Calme</span></p>
-  <p>Pré-vision non contractuelle — AéroCalme 2026</p>
+  <p data-en="Non-contractual pre-vision — AéroCalme 2026">Pré-vision non contractuelle — AéroCalme 2026</p>
 </footer>
 
 <!-- ═══════════════════════════ SCRIPTS ═════════════════════════════════ -->
@@ -1506,7 +1532,10 @@
   const label  = document.getElementById('concept-label');
   const slides = Array.from(document.querySelectorAll('.concept-slide'));
   const dots   = Array.from(document.querySelectorAll('.concept-dot-btn'));
-  const labels = ['Soleil Acoustique', 'Licorne Acoustique'];
+  const labels = {
+    fr: ['Soleil Acoustique', 'Licorne Acoustique'],
+    en: ['Acoustic Sun', 'Acoustic Unicorn']
+  };
   let current = 0;
 
   function goTo(idx) {
@@ -1515,7 +1544,7 @@
     current = (idx + slides.length) % slides.length;
     slides[current].classList.add('concept-slide-active');
     dots[current].classList.add('concept-dot-active');
-    label.textContent = labels[current];
+    label.textContent = labels[window.i18nLang || 'fr'][current];
   }
 
   btn.addEventListener('click', () => { goTo(0); modal.classList.add('active'); });
@@ -1538,6 +1567,74 @@
     if (e.key === 'ArrowLeft')  prev.click();
     if (e.key === 'ArrowRight') next.click();
   });
+})();
+
+/* ── FR / EN toggle ─────────────────────────────────────────────────── */
+(function () {
+  window.i18nLang = 'fr';
+  const btn = document.getElementById('lang-btn');
+
+  /* Cache FR content on load */
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.dataset.fr = el.textContent.trim();
+  });
+  document.querySelectorAll('[data-en-html]').forEach(el => {
+    el.dataset.frHtml = el.innerHTML;
+  });
+  document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+    el.dataset.frPlaceholder = el.placeholder;
+  });
+
+  /* Select options translations */
+  const selectOptions = {
+    'lieu-type': {
+      fr: ['— Sélectionnez —','Restaurant / Brasserie','Hôtel — lobby / hall','Bureau — open space','Salle de conférence','Espace culturel / Musée','Commerce / Retail','Lieu de culte','Salle de sport / Wellness','Résidence privée','Autre'],
+      en: ['— Select —','Restaurant / Brasserie','Hotel — lobby / hall','Office — open space','Conference room','Cultural space / Museum','Commerce / Retail','Place of worship','Sports hall / Wellness','Private residence','Other']
+    },
+    'style': {
+      fr: ['— Sélectionnez —','Minimaliste contemporain','Naturel / Organique','Industriel / Loft','Luxe classique','Scandinave','Brutaliste / Architectonique','Lumineux / Céleste','Sur mesure (préciser ci-dessous)'],
+      en: ['— Select —','Contemporary minimalist','Natural / Organic','Industrial / Loft','Classic luxury','Scandinavian','Brutalist / Architectonic','Luminous / Celestial','Custom (specify below)']
+    },
+    'budget': {
+      fr: ['— Sélectionnez —','Moins de 10 000 €','10 000 – 25 000 €','25 000 – 60 000 €','60 000 – 150 000 €','Plus de 150 000 €','Non défini / À évaluer'],
+      en: ['— Select —','Less than €10,000','€10,000 – €25,000','€25,000 – €60,000','€60,000 – €150,000','More than €150,000','Undefined / To be assessed']
+    }
+  };
+
+  function applyLang(lang) {
+    window.i18nLang = lang;
+    btn.textContent = lang === 'en' ? 'FR' : 'EN';
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = lang === 'en' ? el.dataset.en : el.dataset.fr;
+    });
+    document.querySelectorAll('[data-en-html]').forEach(el => {
+      el.innerHTML = lang === 'en' ? el.dataset.enHtml : el.dataset.frHtml;
+    });
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.frPlaceholder;
+    });
+
+    Object.entries(selectOptions).forEach(([id, opts]) => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+      const idx = sel.selectedIndex;
+      Array.from(sel.options).forEach((opt, i) => { if (opts[lang][i]) opt.textContent = opts[lang][i]; });
+      sel.selectedIndex = idx;
+    });
+
+    /* Update concept-label if modal is open */
+    const labelEl = document.getElementById('concept-label');
+    const activeSlide = document.querySelector('.concept-slide-active');
+    if (labelEl && activeSlide) {
+      const slideIdx = Array.from(document.querySelectorAll('.concept-slide')).indexOf(activeSlide);
+      const conceptLabels = { fr: ['Soleil Acoustique', 'Licorne Acoustique'], en: ['Acoustic Sun', 'Acoustic Unicorn'] };
+      if (slideIdx >= 0) labelEl.textContent = conceptLabels[lang][slideIdx];
+    }
+  }
+
+  btn.addEventListener('click', () => applyLang(window.i18nLang === 'fr' ? 'en' : 'fr'));
 })();
 </script>
 </body>
